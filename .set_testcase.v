@@ -1,0 +1,5 @@
+`define INPUT_FILE "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_alu.ctrace"
+`define OUTPUT_FILE "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_alu.output"
+`define ORIG_INPUT_FILE "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_alu.trace"
+`define MEMORY_IMAGE_FILE "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_alu.hex"
+`define TEST_CASE "test_alu"

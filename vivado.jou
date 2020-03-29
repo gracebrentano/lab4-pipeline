@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Sun Mar 29 13:03:18 2020
+# Process ID: 16135
+# Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
+# Command line: vivado -mode batch -source ../common/tcl/build.tcl
+# Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.log
+# Journal file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.jou
+#-----------------------------------------------------------
+source ../common/tcl/build.tcl
