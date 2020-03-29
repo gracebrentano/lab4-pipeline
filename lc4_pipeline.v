@@ -41,6 +41,8 @@ module lc4_processor
     output wire [7:0]  led_data // Which Zedboard LEDs should be turned on?
     );
    
+   `include "include/lc4_prettyprint_errors.v"
+   
    // By default, assign LEDs to display switch inputs to avoid warnings about
    // disconnected ports. Feel free to use this for debugging input/output if
    // you desire.
@@ -48,8 +50,6 @@ module lc4_processor
 
    
    /* DO NOT MODIFY THIS CODE */
-   // Always execute one instruction each cycle (test_stall will get used in your pipelined processor)
-   assign test_stall = 2'b0; 
 
    // pc wires attached to the PC register's ports
    wire [15:0]   pc;      // Current program counter (read out from pc_reg)
@@ -62,6 +62,11 @@ module lc4_processor
 
    //insn logic
    assign test_cur_insn = i_cur_insn;
+
+   //Tregfile DECODE STAGE
+   wire [15:0]   reg_insn_pc_out, reg_insn_ir_out;
+   Nbit_reg #(16, 16'h0000) reg_insn_pc (.in(pc), .out(reg_insn_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h0000) reg_insn_ir (.in(i_cur_insn), .out(reg_insn_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
 
    //decoder
    wire [2:0] r1sel, r2sel, wsel;
@@ -83,7 +88,7 @@ module lc4_processor
    assign test_regfile_wsel = wsel;
    assign test_nzp_we = nzp_we;
 
-   //make a register
+   //make a register file
    wire [15:0] reg_rs_out, reg_rt_out, reg_rd_out;
    lc4_regfile regFile(.clk(clk),
                        .gwe(gwe),
@@ -96,6 +101,13 @@ module lc4_processor
                        .i_wdata(test_regfile_data),
                        .i_rd_we(regfile_we));
 
+   //Talu EXECUTE STAGE
+   wire [15:0]   reg_alu_pc_out, reg_alu_ir_out, reg_alu_rs_out, reg_alu_rt_out;
+   Nbit_reg #(16, 16'h0000) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h0000) reg_alu_ir (.in(reg_insn_ir_out), .out(reg_alu_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h0000) reg_alu_rs (.in(reg_rs_out), .out(reg_alu_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h0000) reg_alu_rt (.in(reg_rt_out), .out(reg_alu_rt_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+
     //make the alu jawn
     wire [15:0] alu_out;
     lc4_alu alu (.i_insn(i_cur_insn),
@@ -104,7 +116,13 @@ module lc4_processor
                  .i_r2data(reg_rt_out),
                  .o_result(alu_out));
 
-    //LOAD + STORE
+    //Tdata-mem MEMORY STAGE
+    wire [15:0]   reg_mem_ir_out, reg_mem_alu_out, reg_mem_rt_out;
+    Nbit_reg #(16, 16'h0000) reg_mem_ir (.in(reg_alu_ir_out), .out(reg_mem_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+    Nbit_reg #(16, 16'h0000) reg_mem_alu (.in(alu_out), .out(reg_mem_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+    Nbit_reg #(16, 16'h0000) reg_mem_rt (.in(reg_alu_rt_out), .out(reg_mem_rt_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+
+    //Memory Operations
     wire [15:0] temp_dmem_addr, temp_dmem_data;
     assign o_dmem_we = i_cur_insn[15:12] == 4'b0111 ? 1'b1 : 1'b0;
     assign test_dmem_we = o_dmem_we;
@@ -117,10 +135,18 @@ module lc4_processor
     assign test_dmem_data = temp_dmem_data;
     assign o_dmem_towrite = is_store ? reg_rt_out : 16'b0;
 
+    
+    //Tw WRITE STAGE
+    wire [15:0]   reg_w_ir_out, reg_w_alu_out, reg_w_data_out;
+    Nbit_reg #(16, 16'h0000) reg_w_ir (.in(reg_mem_ir_out), .out(reg_w_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+    Nbit_reg #(16, 16'h0000) reg_w_alu (.in(reg_mem_alu_out), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+    Nbit_reg #(16, 16'h0000) reg_w_data (.in(test_dmem_data), .out(reg_w_data_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+
+    assign test_stall = reg_w_ir_out == 16'h0000 ? 2'b10 : 2'b00;
+
     //extra pc_plus_one for trap
     wire [15:0] pc_plus_one;
     cla16 pc_cla0 (.a(pc), .b(16'b0), .cin(1'd1), .sum(pc_plus_one));
-    
     //figure out what needs to be stored on next pc cycle
     assign test_regfile_data = is_load ? test_dmem_data : (i_cur_insn[15:12] == 4'b1111 || i_cur_insn[15:12] == 4'b0100 ? pc_plus_one : alu_out);
 
@@ -139,7 +165,7 @@ module lc4_processor
     assign pc_offset = (should_branch == 1'b1 && is_branch) ? imm9 : (i_cur_insn[15:11] == 5'b11001 ? imm11 : 16'b0);
     
     //NEXT PC LOGIC
-    wire [15:0] next_pc_temp_branch, next_pc_temp_rs, next_pc_temp_rti;
+    wire [15:0] next_pc_temp_branch, next_pc_temp_rs, next_pc_temp_rti, next_pc_temp_final;
     cla16 pc_cla (.a(pc), .b(pc_offset), .cin(1'd1), .sum(next_pc_temp_branch));
 
     //compare to jsrr and jmpr mux
@@ -147,7 +173,9 @@ module lc4_processor
 
     //finally if a trap and jsr use alu output
     assign next_pc_temp_rti = (i_cur_insn[15:12] == 4'b1111 ||  i_cur_insn[15:11] == 5'b01001) ? alu_out : next_pc_temp_rs;
-    assign next_pc = (i_cur_insn[15:12] == 4'b1000) ? reg_rs_out : next_pc_temp_rti;
+    assign next_pc_temp_final = (i_cur_insn[15:12] == 4'b1000) ? reg_rs_out : next_pc_temp_rti;
+    assign next_pc = (test_stall == 2'b10) ? pc : next_pc_temp_final;
+    
     assign test_cur_pc = pc;
     assign o_cur_pc = pc;
 
