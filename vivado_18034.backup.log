@@ -1,0 +1,540 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon Mar 30 14:54:38 2020
+# Process ID: 18034
+# Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
+# Command line: vivado -mode batch -source ../common/tcl/build.tcl
+# Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.log
+# Journal file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.jou
+#-----------------------------------------------------------
+source ../common/tcl/build.tcl
+# set outputDir ./output
+# file mkdir $outputDir
+# proc get_file_contents { filename } {
+#     if {[catch {
+#         set FH [open $filename r]
+#         set content [read $FH]
+#         close $FH
+#     } errorstring]} {
+#         error " File $filename could not be opened : $errorstring "
+#     }
+#     return $content
+# }
+# if {[get_file_contents .step] == "synthesis"} { # just doing synthesis
+#     read_verilog [get_file_contents .synthesis-source-files]
+# } else { # going all the way to implementation
+#     read_verilog [get_file_contents .implementation-source-files]
+# }
+# set_part xc7z020clg484-1
+INFO: [Coretcl 2-1500] The part has been set to 'xc7z020clg484-1' for the current project only. Run set_part -help for more details. To evaluate different speed grades in the current design, use the set_speed_grade command, or use the open_checkpoint -part command to change the part used by an existing checkpoint design.
+# if { [string length [get_file_contents .ip-blocks]] > 0 } {
+#     read_ip [get_file_contents .ip-blocks]
+# 
+#     # generate synthesis targets for IP blocks, so they will get synthesized by synth_design below
+#     if { [llength [get_ips]] > 0 } {
+#         generate_target all [get_ips]
+#         #synth_ip [get_ips charLib init_sequence_rom pixel_buffer] # <- doesn't work for some reason
+#     }
+# }
+# if {[get_file_contents .step] == "synthesis"} { # just doing synthesis
+#     synth_design -top [get_file_contents .top-synth-module] -part xc7z020clg484-1
+# 
+# } else { # going all the way to implementation instead
+#     if {[get_file_contents .top-impl-module] == ""} {
+#         error "This design has no top-level module defined for implementation. It can only be run through synthesis."
+#     }
+# 
+#     # only add constraint files if there are any
+#     if { [string length [get_file_contents .constraint-files]] > 0 } {
+#         read_xdc [get_file_contents .constraint-files]
+#     }
+# 
+#     synth_design -top [get_file_contents .top-impl-module] -part xc7z020clg484-1
+# }
+Command: synth_design -top lc4_processor -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18040 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1226.270 ; gain = 63.000 ; free physical = 1663 ; free virtual = 11462
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'lc4_processor' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 16 - type: integer 
+	Parameter r bound to: 16'b1000001000000000 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg' (1#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'lc4_decoder' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v:4]
+INFO: [Synth 8-256] done synthesizing module 'lc4_decoder' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v:4]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized0' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 16 - type: integer 
+	Parameter r bound to: 16'b0000000000000000 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized0' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 3 - type: integer 
+	Parameter r bound to: 3'b000 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized1' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized2' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 1 - type: integer 
+	Parameter r bound to: 1'b0 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized2' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized3' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 2 - type: integer 
+	Parameter r bound to: 2'b10 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized3' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'lc4_regfile' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:14]
+	Parameter n bound to: 16 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized4' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 16 - type: integer 
+	Parameter r bound to: 0 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized4' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_mux8to1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:45]
+INFO: [Synth 8-226] default block is never used [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:59]
+INFO: [Synth 8-256] done synthesizing module 'Nbit_mux8to1' (3#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:45]
+INFO: [Synth 8-256] done synthesizing module 'lc4_regfile' (4#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:14]
+INFO: [Synth 8-638] synthesizing module 'lc4_alu' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:57]
+INFO: [Synth 8-638] synthesizing module 'lc4_divider' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:8]
+INFO: [Synth 8-638] synthesizing module 'lc4_divider_one_iter' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:39]
+INFO: [Synth 8-256] done synthesizing module 'lc4_divider_one_iter' (5#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:39]
+INFO: [Synth 8-256] done synthesizing module 'lc4_divider' (6#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:8]
+INFO: [Synth 8-638] synthesizing module 'cla_box' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:9]
+INFO: [Synth 8-638] synthesizing module 'cla16' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:48]
+INFO: [Synth 8-638] synthesizing module 'gp1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:11]
+INFO: [Synth 8-256] done synthesizing module 'gp1' (7#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:11]
+INFO: [Synth 8-638] synthesizing module 'gp4' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:26]
+INFO: [Synth 8-256] done synthesizing module 'gp4' (8#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:26]
+INFO: [Synth 8-256] done synthesizing module 'cla16' (9#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:48]
+WARNING: [Synth 8-689] width (16) of port connection 'cin' does not match port width (1) of module 'cla16' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:53]
+INFO: [Synth 8-256] done synthesizing module 'cla_box' (10#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:9]
+INFO: [Synth 8-256] done synthesizing module 'lc4_alu' (11#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:57]
+WARNING: [Synth 8-689] width (16) of port connection 'in' does not match port width (3) of module 'Nbit_reg__parameterized1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:226]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized5' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 3 - type: integer 
+	Parameter r bound to: 0 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized5' (11#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-256] done synthesizing module 'lc4_processor' (12#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
+WARNING: [Synth 8-3331] design cla_box has unconnected port i_insn[11]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1268.801 ; gain = 105.531 ; free physical = 1672 ; free virtual = 11471
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1268.801 ; gain = 105.531 ; free physical = 1672 ; free virtual = 11472
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1276.805 ; gain = 113.535 ; free physical = 1672 ; free virtual = 11472
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-5544] ROM "check_6" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "check_4" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "check_0" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mux_ch_20" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "mux_ch_22" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "mux_ch_21" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "mux_ch_19" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "mux_ch_16" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mux_ch_17" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mux_ch_18" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "o_dmem_we" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1292.820 ; gain = 129.551 ; free physical = 1649 ; free virtual = 11449
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     16 Bit       Adders := 16    
++---XORs : 
+	   3 Input     16 Bit         XORs := 4     
+	   2 Input     16 Bit         XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 26    
+	                3 Bit    Registers := 13    
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 97    
+	   2 Input      3 Bit        Muxes := 9     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 33    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module lc4_processor 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 16    
+	   2 Input      3 Bit        Muxes := 5     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 1     
+Module Nbit_reg 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module lc4_decoder 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 4     
+Module Nbit_reg__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module Nbit_reg__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
+Module Nbit_reg__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module Nbit_reg__parameterized3 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+Module Nbit_reg__parameterized4 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module lc4_divider_one_iter 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     16 Bit       Adders := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 1     
+Module cla16 
+Detailed RTL Component Info : 
++---XORs : 
+	   3 Input     16 Bit         XORs := 1     
+Module cla_box 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 8     
+	   2 Input      1 Bit        Muxes := 3     
+Module lc4_alu 
+Detailed RTL Component Info : 
++---XORs : 
+	   2 Input     16 Bit         XORs := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 25    
+	   2 Input      1 Bit        Muxes := 13    
+Module Nbit_reg__parameterized5 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "c/check_6" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "mux_ch_21" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "mux_ch_22" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "mux_ch_17" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mux_ch_16" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "mux_ch_20" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+DSP Report: Generating DSP mul_o, operation Mode is: A*B.
+DSP Report: operator mul_o is absorbed into DSP mul_o.
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_rs/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_r1sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_r2sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_is_branch/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_rs/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_r1sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_r2sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_is_branch/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-3331] design lc4_divider_one_iter has unconnected port i_remainder[15]
+WARNING: [Synth 8-3331] design lc4_divider_one_iter has unconnected port i_quotient[15]
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\reg_insn_stall/state_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (reg_insn_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_alu_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_mem_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_w_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1398 ; free virtual = 11198
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping  Report (see note below)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|lc4_alu     | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1398 ; free virtual = 11198
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1396 ; free virtual = 11196
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   116|
+|3     |DSP48E1 |     1|
+|4     |LUT1    |    14|
+|5     |LUT2    |   259|
+|6     |LUT3    |   113|
+|7     |LUT4    |   533|
+|8     |LUT5    |   321|
+|9     |LUT6    |   484|
+|10    |MUXF7   |    22|
+|11    |FDRE    |   419|
+|12    |FDSE    |    14|
+|13    |IBUF    |    43|
+|14    |OBUF    |   148|
++------+--------+------+
+
+Report Instance Areas: 
++------+----------------------+----------------------------+------+
+|      |Instance              |Module                      |Cells |
++------+----------------------+----------------------------+------+
+|1     |top                   |                            |  2488|
+|2     |  alu                 |lc4_alu                     |    93|
+|3     |    a                 |lc4_divider                 |    92|
+|4     |      \genblk1[0].l   |lc4_divider_one_iter        |     2|
+|5     |      \genblk1[10].l  |lc4_divider_one_iter_48     |     6|
+|6     |      \genblk1[11].l  |lc4_divider_one_iter_49     |     6|
+|7     |      \genblk1[12].l  |lc4_divider_one_iter_50     |     6|
+|8     |      \genblk1[13].l  |lc4_divider_one_iter_51     |     6|
+|9     |      \genblk1[14].l  |lc4_divider_one_iter_52     |     6|
+|10    |      \genblk1[15].l  |lc4_divider_one_iter_53     |     6|
+|11    |      \genblk1[1].l   |lc4_divider_one_iter_54     |     6|
+|12    |      \genblk1[2].l   |lc4_divider_one_iter_55     |     6|
+|13    |      \genblk1[3].l   |lc4_divider_one_iter_56     |     6|
+|14    |      \genblk1[4].l   |lc4_divider_one_iter_57     |     6|
+|15    |      \genblk1[5].l   |lc4_divider_one_iter_58     |     6|
+|16    |      \genblk1[6].l   |lc4_divider_one_iter_59     |     6|
+|17    |      \genblk1[7].l   |lc4_divider_one_iter_60     |     6|
+|18    |      \genblk1[8].l   |lc4_divider_one_iter_61     |     6|
+|19    |      \genblk1[9].l   |lc4_divider_one_iter_62     |     6|
+|20    |  nzp_reg             |Nbit_reg__parameterized5    |     5|
+|21    |  pc_reg              |Nbit_reg                    |    25|
+|22    |  regFile             |lc4_regfile                 |   225|
+|23    |    r0                |Nbit_reg__parameterized4    |    17|
+|24    |    r1                |Nbit_reg__parameterized4_41 |    16|
+|25    |    r2                |Nbit_reg__parameterized4_42 |    16|
+|26    |    r3                |Nbit_reg__parameterized4_43 |    48|
+|27    |    r4                |Nbit_reg__parameterized4_44 |    16|
+|28    |    r5                |Nbit_reg__parameterized4_45 |    16|
+|29    |    r6                |Nbit_reg__parameterized4_46 |    16|
+|30    |    r7                |Nbit_reg__parameterized4_47 |    80|
+|31    |  reg_alu_ir          |Nbit_reg__parameterized0    |   400|
+|32    |  reg_alu_is_branch   |Nbit_reg__parameterized2    |     1|
+|33    |  reg_alu_is_load     |Nbit_reg__parameterized2_0  |     1|
+|34    |  reg_alu_is_store    |Nbit_reg__parameterized2_1  |     1|
+|35    |  reg_alu_nzp_we      |Nbit_reg__parameterized2_2  |     1|
+|36    |  reg_alu_pc          |Nbit_reg_3                  |    16|
+|37    |  reg_alu_r1sel       |Nbit_reg__parameterized1    |     3|
+|38    |  reg_alu_r2sel       |Nbit_reg__parameterized1_4  |     3|
+|39    |  reg_alu_regfile_we  |Nbit_reg__parameterized2_5  |     1|
+|40    |  reg_alu_rs          |Nbit_reg__parameterized0_6  |    16|
+|41    |  reg_alu_rt          |Nbit_reg__parameterized0_7  |    16|
+|42    |  reg_alu_stall       |Nbit_reg__parameterized3    |     1|
+|43    |  reg_alu_wsel        |Nbit_reg__parameterized1_8  |     3|
+|44    |  reg_insn_ir         |Nbit_reg__parameterized0_9  |    32|
+|45    |  reg_insn_is_branch  |Nbit_reg__parameterized2_10 |     4|
+|46    |  reg_insn_is_load    |Nbit_reg__parameterized2_11 |     2|
+|47    |  reg_insn_is_store   |Nbit_reg__parameterized2_12 |     2|
+|48    |  reg_insn_nzp_we     |Nbit_reg__parameterized2_13 |     2|
+|49    |  reg_insn_pc         |Nbit_reg_14                 |    17|
+|50    |  reg_insn_r1sel      |Nbit_reg__parameterized1_15 |     6|
+|51    |  reg_insn_r2sel      |Nbit_reg__parameterized1_16 |     6|
+|52    |  reg_insn_regfile_we |Nbit_reg__parameterized2_17 |     2|
+|53    |  reg_insn_stall      |Nbit_reg__parameterized3_18 |     2|
+|54    |  reg_insn_wsel       |Nbit_reg__parameterized1_19 |     6|
+|55    |  reg_mem_alu         |Nbit_reg__parameterized0_20 |  1153|
+|56    |  reg_mem_ir          |Nbit_reg__parameterized0_21 |    17|
+|57    |  reg_mem_is_load     |Nbit_reg__parameterized2_22 |    17|
+|58    |  reg_mem_is_store    |Nbit_reg__parameterized2_23 |    17|
+|59    |  reg_mem_nzp_we      |Nbit_reg__parameterized2_24 |     1|
+|60    |  reg_mem_pc          |Nbit_reg_25                 |    16|
+|61    |  reg_mem_regfile_we  |Nbit_reg__parameterized2_26 |     1|
+|62    |  reg_mem_rt          |Nbit_reg__parameterized0_27 |    16|
+|63    |  reg_mem_stall       |Nbit_reg__parameterized3_28 |     3|
+|64    |  reg_mem_wsel        |Nbit_reg__parameterized1_29 |     5|
+|65    |  reg_w_alu           |Nbit_reg__parameterized0_30 |    16|
+|66    |  reg_w_data          |Nbit_reg__parameterized0_31 |    34|
+|67    |  reg_w_data_addr     |Nbit_reg__parameterized0_32 |    16|
+|68    |  reg_w_dmem_we       |Nbit_reg__parameterized2_33 |     1|
+|69    |  reg_w_ir            |Nbit_reg__parameterized0_34 |    17|
+|70    |  reg_w_is_load       |Nbit_reg__parameterized2_35 |     1|
+|71    |  reg_w_nzp_we        |Nbit_reg__parameterized2_36 |     1|
+|72    |  reg_w_pc            |Nbit_reg_37                 |    51|
+|73    |  reg_w_regfile_we    |Nbit_reg__parameterized2_38 |     1|
+|74    |  reg_w_stall         |Nbit_reg__parameterized3_39 |     3|
+|75    |  reg_w_wsel          |Nbit_reg__parameterized1_40 |    17|
++------+----------------------+----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1397 ; free virtual = 11197
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.750 ; gain = 386.480 ; free physical = 1395 ; free virtual = 11194
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:37 . Memory (MB): peak = 1549.758 ; gain = 386.480 ; free physical = 1402 ; free virtual = 11202
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 182 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+64 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:39 . Memory (MB): peak = 1607.777 ; gain = 457.879 ; free physical = 1385 ; free virtual = 11184
+# report_timing_summary -file $outputDir/post_synth_timing_summary_report.txt
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+report_timing_summary: Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1989.977 ; gain = 382.199 ; free physical = 989 ; free virtual = 10789
+# report_utilization -file $outputDir/post_synth_utilization.txt
+report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.11 . Memory (MB): peak = 1989.977 ; gain = 0.000 ; free physical = 989 ; free virtual = 10789
+# report_drc -file $outputDir/post_synth_drc_report.txt
+Command: report_drc -file ./output/post_synth_drc_report.txt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home1/c/cis371/software/Vivado/2017.4/data/ip'.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/output/post_synth_drc_report.txt.
+report_drc completed successfully
+# puts "Synthesis complete!"
+Synthesis complete!
+# if {[get_file_contents .step] == "synthesis"} {
+#     exit
+# }
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 30 14:55:46 2020...

@@ -2,8 +2,8 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Sun Mar 29 13:03:18 2020
-# Process ID: 16135
+# Start of session at: Mon Mar 30 15:36:42 2020
+# Process ID: 24706
 # Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
 # Command line: vivado -mode batch -source ../common/tcl/build.tcl
 # Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.log
@@ -53,230 +53,83 @@ INFO: [Coretcl 2-1500] The part has been set to 'xc7z020clg484-1' for the curren
 # 
 #     synth_design -top [get_file_contents .top-impl-module] -part xc7z020clg484-1
 # }
-Command: synth_design -top lc4_system -part xc7z020clg484-1
+Command: synth_design -top lc4_processor -part xc7z020clg484-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 16141 
+INFO: Helper process launched with PID 24710 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1226.277 ; gain = 62.984 ; free physical = 232 ; free virtual = 4714
+Starting Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1226.277 ; gain = 63.000 ; free physical = 1598 ; free virtual = 11355
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'lc4_system' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lc4_system.v:8]
-INFO: [Synth 8-638] synthesizing module 'mmcm_clock_wizard' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/mmcm.v:70]
-INFO: [Synth 8-638] synthesizing module 'IBUF' [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:19468]
-	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
-	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
-	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
-	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
-	Parameter IOSTANDARD bound to: DEFAULT - type: string 
-INFO: [Synth 8-256] done synthesizing module 'IBUF' (1#1) [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:19468]
-INFO: [Synth 8-638] synthesizing module 'MMCME2_ADV' [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:25757]
-	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
-	Parameter CLKFBOUT_MULT_F bound to: 10.000000 - type: float 
-	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: float 
-	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
-	Parameter CLKOUT0_DIVIDE_F bound to: 57.250000 - type: float 
-	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT1_DIVIDE bound to: 40 - type: integer 
-	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
-	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT2_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
-	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT3_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
-	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
-	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT4_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
-	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT5_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter CLKOUT6_DIVIDE bound to: 1 - type: integer 
-	Parameter CLKOUT6_DUTY_CYCLE bound to: 0.500000 - type: float 
-	Parameter CLKOUT6_PHASE bound to: 0.000000 - type: float 
-	Parameter CLKOUT6_USE_FINE_PS bound to: FALSE - type: string 
-	Parameter COMPENSATION bound to: ZHOLD - type: string 
-	Parameter DIVCLK_DIVIDE bound to: 1 - type: integer 
-	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
-	Parameter IS_PSEN_INVERTED bound to: 1'b0 
-	Parameter IS_PSINCDEC_INVERTED bound to: 1'b0 
-	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
-	Parameter IS_RST_INVERTED bound to: 1'b0 
-	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
-	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
-	Parameter SS_EN bound to: FALSE - type: string 
-	Parameter SS_MODE bound to: CENTER_HIGH - type: string 
-	Parameter SS_MOD_PERIOD bound to: 10000 - type: integer 
-	Parameter STARTUP_WAIT bound to: FALSE - type: string 
-INFO: [Synth 8-256] done synthesizing module 'MMCME2_ADV' (2#1) [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:25757]
-INFO: [Synth 8-638] synthesizing module 'BUFG' [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
-INFO: [Synth 8-256] done synthesizing module 'BUFG' (3#1) [/home1/c/cis371/software/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
-INFO: [Synth 8-256] done synthesizing module 'mmcm_clock_wizard' (4#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/mmcm.v:70]
-INFO: [Synth 8-638] synthesizing module 'one_pulse' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/one_pulse.v:17]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 8 - type: integer 
-	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg' (5#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-256] done synthesizing module 'one_pulse' (6#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/one_pulse.v:17]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized0' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 1 - type: integer 
-	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized0' (6#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-638] synthesizing module 'lc4_we_gen' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/clock_util.v:20]
-INFO: [Synth 8-638] synthesizing module 'count' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/clock_util.v:6]
-	Parameter n bound to: 2 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'count' (7#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/clock_util.v:6]
-INFO: [Synth 8-256] done synthesizing module 'lc4_we_gen' (8#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/clock_util.v:20]
 INFO: [Synth 8-638] synthesizing module 'lc4_processor' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 	Parameter n bound to: 16 - type: integer 
 	Parameter r bound to: 16'b1000001000000000 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized1' (8#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg' (1#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 INFO: [Synth 8-638] synthesizing module 'lc4_decoder' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v:4]
-INFO: [Synth 8-256] done synthesizing module 'lc4_decoder' (9#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v:4]
+INFO: [Synth 8-256] done synthesizing module 'lc4_decoder' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v:4]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized0' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 16 - type: integer 
+	Parameter r bound to: 16'b0000000000000000 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized0' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 3 - type: integer 
+	Parameter r bound to: 3'b000 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized1' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized2' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 1 - type: integer 
+	Parameter r bound to: 1'b0 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized2' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized3' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+	Parameter n bound to: 2 - type: integer 
+	Parameter r bound to: 2'b10 
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized3' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 INFO: [Synth 8-638] synthesizing module 'lc4_regfile' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:14]
 	Parameter n bound to: 16 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized2' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized4' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 	Parameter n bound to: 16 - type: integer 
 	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized2' (9#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized4' (2#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 INFO: [Synth 8-638] synthesizing module 'Nbit_mux8to1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:45]
 INFO: [Synth 8-226] default block is never used [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:59]
-INFO: [Synth 8-256] done synthesizing module 'Nbit_mux8to1' (10#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:45]
-INFO: [Synth 8-256] done synthesizing module 'lc4_regfile' (11#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:14]
+INFO: [Synth 8-256] done synthesizing module 'Nbit_mux8to1' (3#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:45]
+INFO: [Synth 8-256] done synthesizing module 'lc4_regfile' (4#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v:14]
 INFO: [Synth 8-638] synthesizing module 'lc4_alu' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:57]
 INFO: [Synth 8-638] synthesizing module 'lc4_divider' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:8]
 INFO: [Synth 8-638] synthesizing module 'lc4_divider_one_iter' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:39]
-INFO: [Synth 8-256] done synthesizing module 'lc4_divider_one_iter' (12#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:39]
-INFO: [Synth 8-256] done synthesizing module 'lc4_divider' (13#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:8]
+INFO: [Synth 8-256] done synthesizing module 'lc4_divider_one_iter' (5#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:39]
+INFO: [Synth 8-256] done synthesizing module 'lc4_divider' (6#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v:8]
 INFO: [Synth 8-638] synthesizing module 'cla_box' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:9]
 INFO: [Synth 8-638] synthesizing module 'cla16' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:48]
 INFO: [Synth 8-638] synthesizing module 'gp1' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:11]
-INFO: [Synth 8-256] done synthesizing module 'gp1' (14#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:11]
+INFO: [Synth 8-256] done synthesizing module 'gp1' (7#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:11]
 INFO: [Synth 8-638] synthesizing module 'gp4' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:26]
-INFO: [Synth 8-256] done synthesizing module 'gp4' (15#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:26]
-INFO: [Synth 8-256] done synthesizing module 'cla16' (16#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:48]
+INFO: [Synth 8-256] done synthesizing module 'gp4' (8#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:26]
+INFO: [Synth 8-256] done synthesizing module 'cla16' (9#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v:48]
 WARNING: [Synth 8-689] width (16) of port connection 'cin' does not match port width (1) of module 'cla16' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:53]
-INFO: [Synth 8-256] done synthesizing module 'cla_box' (17#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:9]
-INFO: [Synth 8-256] done synthesizing module 'lc4_alu' (18#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:57]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized3' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-256] done synthesizing module 'cla_box' (10#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:9]
+INFO: [Synth 8-256] done synthesizing module 'lc4_alu' (11#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:57]
+INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized5' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
 	Parameter n bound to: 3 - type: integer 
 	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized3' (18#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-256] done synthesizing module 'lc4_processor' (19#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
-WARNING: [Synth 8-350] instance 'proc_inst' of module 'lc4_processor' requires 22 connections, but only 11 given [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lc4_system.v:132]
-INFO: [Synth 8-638] synthesizing module 'lc4_memory' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/lc4_memory.v:9]
-INFO: [Synth 8-638] synthesizing module 'bram' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v:8]
-INFO: [Synth 8-3876] $readmem data file '/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_alu.hex' is read successfully [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v:55]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized4' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 16 - type: integer 
-	Parameter r bound to: 16'b0000000000000000 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized4' (19#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-WARNING: [Synth 8-3936] Found unconnected internal register 'read_vaddr_reg' and it is trimmed from '16' to '14' bits. [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v:78]
-INFO: [Synth 8-256] done synthesizing module 'bram' (20#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v:8]
-INFO: [Synth 8-638] synthesizing module 'delay_eight_cycles' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/delay_eight_cycles.v:4]
-	Parameter n bound to: 16 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'delay_eight_cycles' (21#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/delay_eight_cycles.v:4]
-INFO: [Synth 8-256] done synthesizing module 'lc4_memory' (22#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/lc4_memory.v:9]
-INFO: [Synth 8-638] synthesizing module 'fake_pb_kbd' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/fake_pb_kbd.v:23]
-INFO: [Synth 8-638] synthesizing module 'onepulse_fsm' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/fake_pb_kbd.v:68]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized5' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 2 - type: integer 
-	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized5' (22#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-256] done synthesizing module 'onepulse_fsm' (23#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/fake_pb_kbd.v:68]
-INFO: [Synth 8-256] done synthesizing module 'fake_pb_kbd' (24#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/fake_pb_kbd.v:23]
-INFO: [Synth 8-638] synthesizing module 'timer_device' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/timer.v:6]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized6' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 32 - type: integer 
-	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized6' (24#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-256] done synthesizing module 'timer_device' (25#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/timer.v:6]
-INFO: [Synth 8-638] synthesizing module 'vga_controller' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/vga_controller.v:34]
-INFO: [Synth 8-638] synthesizing module 'video_out' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/video_out.v:66]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized7' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 1 - type: integer 
-	Parameter r bound to: 1 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized7' (25#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-638] synthesizing module 'Nbit_reg__parameterized8' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-	Parameter n bound to: 4 - type: integer 
-	Parameter r bound to: 0 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized8' (25#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
-INFO: [Synth 8-256] done synthesizing module 'video_out' (26#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/video_out.v:66]
-INFO: [Synth 8-638] synthesizing module 'svga_timing_generation' [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/svga_timing_generation.v:81]
-INFO: [Synth 8-256] done synthesizing module 'svga_timing_generation' (27#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/svga_timing_generation.v:81]
-INFO: [Synth 8-256] done synthesizing module 'vga_controller' (28#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/vga_controller.v:34]
-INFO: [Synth 8-256] done synthesizing module 'lc4_system' (29#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lc4_system.v:8]
-WARNING: [Synth 8-3331] design video_out has unconnected port PIXEL_COUNT[10]
-WARNING: [Synth 8-3331] design video_out has unconnected port LINE_COUNT[9]
-WARNING: [Synth 8-3331] design video_out has unconnected port LINE_COUNT[1]
-WARNING: [Synth 8-3331] design video_out has unconnected port LINE_COUNT[0]
-WARNING: [Synth 8-3331] design video_out has unconnected port VGA_DATA[10]
-WARNING: [Synth 8-3331] design video_out has unconnected port VGA_DATA[5]
-WARNING: [Synth 8-3331] design video_out has unconnected port VGA_DATA[0]
-WARNING: [Synth 8-3331] design fake_pb_kbd has unconnected port read_kbsr
-WARNING: [Synth 8-3331] design bram has unconnected port vaddr[15]
-WARNING: [Synth 8-3331] design bram has unconnected port vaddr[14]
+INFO: [Synth 8-256] done synthesizing module 'Nbit_reg__parameterized5' (11#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:14]
+INFO: [Synth 8-256] done synthesizing module 'lc4_processor' (12#1) [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
 WARNING: [Synth 8-3331] design cla_box has unconnected port i_insn[11]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1296.809 ; gain = 133.516 ; free physical = 286 ; free virtual = 4712
+Finished Synthesize : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1268.809 ; gain = 105.531 ; free physical = 1606 ; free virtual = 11364
 ---------------------------------------------------------------------------------
-
-Report Check Netlist: 
-+------+------------------+-------+---------+-------+------------------+
-|      |Item              |Errors |Warnings |Status |Description       |
-+------+------------------+-------+---------+-------+------------------+
-|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
-+------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1296.809 ; gain = 133.516 ; free physical = 290 ; free virtual = 4717
----------------------------------------------------------------------------------
-INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
-INFO: [Device 21-403] Loading part xc7z020clg484-1
-INFO: [Project 1-570] Preparing netlist for logic optimization
-
-Processing XDC Constraints
-Initializing timing engine
-Parsing XDC File [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lab4-pipeline.xdc]
-Finished Parsing XDC File [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lab4-pipeline.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lab4-pipeline.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/lc4_system_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/lc4_system_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-INFO: [Timing 38-2] Deriving generated clocks
-Completed Processing XDC Constraints
-
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1669.621 ; gain = 0.000 ; free physical = 223 ; free virtual = 4462
----------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1669.621 ; gain = 506.328 ; free physical = 315 ; free virtual = 4554
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1268.809 ; gain = 105.531 ; free physical = 1606 ; free virtual = 11364
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1669.621 ; gain = 506.328 ; free physical = 315 ; free virtual = 4554
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1276.812 ; gain = 113.535 ; free physical = 1606 ; free virtual = 11364
 ---------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start Applying 'set_property' XDC Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1669.621 ; gain = 506.328 ; free physical = 318 ; free virtual = 4557
----------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
 INFO: [Synth 8-5544] ROM "check_6" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "check_4" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "check_0" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -288,13 +141,8 @@ INFO: [Synth 8-5544] ROM "mux_ch_16" won't be mapped to Block RAM because addres
 INFO: [Synth 8-5544] ROM "mux_ch_17" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "mux_ch_18" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "o_dmem_we" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5544] ROM "next_state0" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "h_synch" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "LINE_COUNT" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "h_blank" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element LINE_COUNT_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/svga_timing_generation.v:141]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:35 . Memory (MB): peak = 1669.621 ; gain = 506.328 ; free physical = 309 ; free virtual = 4548
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1292.828 ; gain = 129.551 ; free physical = 1592 ; free virtual = 11350
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -302,47 +150,26 @@ Report RTL Partitions:
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
+No constraint files found.
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input     32 Bit       Adders := 1     
 	   3 Input     16 Bit       Adders := 16    
-	   2 Input     11 Bit       Adders := 1     
-	   2 Input     10 Bit       Adders := 1     
-	   2 Input      9 Bit       Adders := 1     
-	   2 Input      8 Bit       Adders := 1     
-	   2 Input      2 Bit       Adders := 1     
 +---XORs : 
-	   3 Input     16 Bit         XORs := 3     
+	   3 Input     16 Bit         XORs := 4     
 	   2 Input     16 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 1     
-	               16 Bit    Registers := 30    
-	               14 Bit    Registers := 1     
-	               11 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 2     
-	                4 Bit    Registers := 3     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 6     
-	                1 Bit    Registers := 14    
-+---RAMs : 
-	            1024K Bit         RAMs := 1     
-	             256K Bit         RAMs := 1     
+	               16 Bit    Registers := 26    
+	                3 Bit    Registers := 13    
+	                2 Bit    Registers := 4     
+	                1 Bit    Registers := 20    
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
-	   2 Input     16 Bit        Muxes := 95    
-	   2 Input     14 Bit        Muxes := 2     
-	   2 Input     11 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 3     
-	   2 Input      7 Bit        Muxes := 4     
-	   2 Input      6 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 5     
-	   2 Input      2 Bit        Muxes := 11    
-	   2 Input      1 Bit        Muxes := 41    
-	   3 Input      1 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 98    
+	   2 Input      3 Bit        Muxes := 8     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 33    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -350,31 +177,14 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module lc4_system 
+Module lc4_processor 
 Detailed RTL Component Info : 
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 3     
+	   2 Input     16 Bit        Muxes := 17    
+	   2 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 1     
 Module Nbit_reg 
-Detailed RTL Component Info : 
-+---Registers : 
-	                8 Bit    Registers := 1     
-Module one_pulse 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      8 Bit       Adders := 1     
-+---Muxes : 
-	   2 Input      8 Bit        Muxes := 2     
-Module Nbit_reg__parameterized0 
-Detailed RTL Component Info : 
-+---Registers : 
-	                1 Bit    Registers := 1     
-Module count 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      2 Bit       Adders := 1     
-+---Registers : 
-	                2 Bit    Registers := 1     
-Module Nbit_reg__parameterized1 
 Detailed RTL Component Info : 
 +---Registers : 
 	               16 Bit    Registers := 1     
@@ -382,7 +192,23 @@ Module lc4_decoder
 Detailed RTL Component Info : 
 +---Muxes : 
 	   2 Input      3 Bit        Muxes := 4     
+Module Nbit_reg__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module Nbit_reg__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	                3 Bit    Registers := 1     
 Module Nbit_reg__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module Nbit_reg__parameterized3 
+Detailed RTL Component Info : 
++---Registers : 
+	                2 Bit    Registers := 1     
+Module Nbit_reg__parameterized4 
 Detailed RTL Component Info : 
 +---Registers : 
 	               16 Bit    Registers := 1     
@@ -409,82 +235,10 @@ Detailed RTL Component Info :
 +---Muxes : 
 	   2 Input     16 Bit        Muxes := 25    
 	   2 Input      1 Bit        Muxes := 13    
-Module Nbit_reg__parameterized3 
-Detailed RTL Component Info : 
-+---Registers : 
-	                3 Bit    Registers := 1     
-Module lc4_processor 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input     16 Bit        Muxes := 8     
-	   2 Input      3 Bit        Muxes := 1     
-	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 1     
-Module Nbit_reg__parameterized4 
-Detailed RTL Component Info : 
-+---Registers : 
-	               16 Bit    Registers := 1     
-Module bram 
-Detailed RTL Component Info : 
-+---Registers : 
-	               16 Bit    Registers := 2     
-	               14 Bit    Registers := 1     
-+---RAMs : 
-	            1024K Bit         RAMs := 1     
-	             256K Bit         RAMs := 1     
-+---Muxes : 
-	   2 Input     16 Bit        Muxes := 3     
 Module Nbit_reg__parameterized5 
 Detailed RTL Component Info : 
 +---Registers : 
-	                2 Bit    Registers := 1     
-Module onepulse_fsm 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input      2 Bit        Muxes := 2     
-Module fake_pb_kbd 
-Detailed RTL Component Info : 
-+---Muxes : 
-	   2 Input      8 Bit        Muxes := 1     
-	   2 Input      7 Bit        Muxes := 4     
-	   2 Input      6 Bit        Muxes := 1     
-Module Nbit_reg__parameterized6 
-Detailed RTL Component Info : 
-+---Registers : 
-	               32 Bit    Registers := 1     
-Module timer_device 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     32 Bit       Adders := 1     
-+---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
-Module Nbit_reg__parameterized7 
-Detailed RTL Component Info : 
-+---Registers : 
-	                1 Bit    Registers := 1     
-Module Nbit_reg__parameterized8 
-Detailed RTL Component Info : 
-+---Registers : 
-	                4 Bit    Registers := 1     
-Module video_out 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      9 Bit       Adders := 1     
-+---Muxes : 
-	   2 Input     14 Bit        Muxes := 2     
-Module svga_timing_generation 
-Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input     11 Bit       Adders := 1     
-	   2 Input     10 Bit       Adders := 1     
-+---Registers : 
-	               11 Bit    Registers := 1     
-	               10 Bit    Registers := 1     
-	                1 Bit    Registers := 9     
-+---Muxes : 
-	   2 Input     11 Bit        Muxes := 1     
-	   3 Input      1 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 8     
+	                3 Bit    Registers := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -497,6 +251,7 @@ BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
+No constraint files found.
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
@@ -508,63 +263,27 @@ INFO: [Synth 8-5544] ROM "mux_ch_16" won't be mapped to Block RAM because addres
 INFO: [Synth 8-5544] ROM "mux_ch_20" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 DSP Report: Generating DSP mul_o, operation Mode is: A*B.
 DSP Report: operator mul_o is absorbed into DSP mul_o.
-WARNING: [Synth 8-6014] Unused sequential element memory/memory/i2out_reg/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_1/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_2/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_3/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_4/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_5/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_6/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_7/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer1/stage_8/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_1/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_2/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_3/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_4/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_5/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_6/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_7/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element memory/delayer2/stage_8/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "vga_cntrl_inst/svga_t_g/h_synch" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "vga_cntrl_inst/svga_t_g/LINE_COUNT" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "p_0_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "vga_cntrl_inst/svga_t_g/h_blank" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element clk_pulse/pulse_reg/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element timer/counter_reg/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
-WARNING: [Synth 8-6014] Unused sequential element vga_cntrl_inst/svga_t_g/LINE_COUNT_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/svga_timing_generation.v:141]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_rs/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_r1sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_r2sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_mem_is_branch/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_rs/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_r1sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_r2sel/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
+WARNING: [Synth 8-6014] Unused sequential element reg_w_is_branch/state_reg was removed.  [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v:25]
 WARNING: [Synth 8-3331] design lc4_divider_one_iter has unconnected port i_remainder[15]
 WARNING: [Synth 8-3331] design lc4_divider_one_iter has unconnected port i_quotient[15]
-RAM Pipeline Warning: Read Address Register Found For RAM memory/memory/VRAM_reg. We will not be able to pipeline it. This may degrade performance. 
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\reset_cleaner/state_reg[0] )
-WARNING: [Synth 8-3332] Sequential element (reset_cleaner/state_reg[0]) is unused and will be removed from module lc4_system.
-WARNING: [Synth 8-3332] Sequential element (fake_kbd_inst/kbdr_reg/state_reg[7]) is unused and will be removed from module lc4_system.
-WARNING: [Synth 8-3332] Sequential element (fake_kbd_inst/kbdr_reg/state_reg[4]) is unused and will be removed from module lc4_system.
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[7]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[6]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[5]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[4]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[3]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[2]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3886] merging instance 'i_6/clk_pulse/pulse_reg/state_reg[1]' (FDRE) to 'i_6/clk_pulse/pulse_reg/state_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_6/\clk_pulse/pulse_reg/state_reg[0] )
-WARNING: [Synth 8-3332] Sequential element (clk_pulse/pulse_reg/state_reg[0]) is unused and will be removed from module lc4_system.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\reg_insn_stall/state_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (reg_insn_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_alu_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_mem_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
+WARNING: [Synth 8-3332] Sequential element (reg_w_stall/state_reg[0]) is unused and will be removed from module lc4_processor.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:00:54 . Memory (MB): peak = 1669.621 ; gain = 506.328 ; free physical = 280 ; free virtual = 4493
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:34 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
-
-Block RAM: Preliminary Mapping  Report (see note below)
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object             | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|bram:       | IDRAM_reg              | 64 K x 16(READ_FIRST)  | W | R | 64 K x 16(WRITE_FIRST) |   | R | Port A and B     | 0      | 32     | 
-|lc4_system  | memory/memory/VRAM_reg | 16 K x 15(NO_CHANGE)   | W |   | 16 K x 15(WRITE_FIRST) |   | R | Port A and B     | 1      | 7      | 
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
-Note: The tale above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
 
 DSP: Preliminary Mapping  Report (see note below)
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
@@ -583,32 +302,12 @@ Report RTL Partitions:
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
----------------------------------------------------------------------------------
-Start Applying XDC Timing Constraints
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:50 ; elapsed = 00:01:02 . Memory (MB): peak = 1701.605 ; gain = 538.312 ; free physical = 306 ; free virtual = 4301
----------------------------------------------------------------------------------
+No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:01:04 . Memory (MB): peak = 1725.637 ; gain = 562.344 ; free physical = 300 ; free virtual = 4295
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP and Shift Register Reporting
----------------------------------------------------------------------------------
-
-Block RAM: Final Mapping  Report
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|Module Name | RTL Object             | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-|bram:       | IDRAM_reg              | 64 K x 16(READ_FIRST)  | W | R | 64 K x 16(WRITE_FIRST) |   | R | Port A and B     | 0      | 32     | 
-|lc4_system  | memory/memory/VRAM_reg | 16 K x 15(NO_CHANGE)   | W |   | 16 K x 15(WRITE_FIRST) |   | R | Port A and B     | 1      | 7      | 
-+------------+------------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP and Shift Register Reporting
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1358 ; free virtual = 11116
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -619,48 +318,8 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_8 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_8 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_9 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_9 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_10 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_10 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_11 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_11 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_12 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_12 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_13 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_13 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_14 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_14 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_15 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/IDRAM_reg_1_15 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_1 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_2 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_3 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_4 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_5 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_6 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
-INFO: [Synth 8-4480] The timing for the instance memory/memory/VRAM_reg_7 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:52 ; elapsed = 00:01:05 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 294 ; free virtual = 4289
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:35 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11112
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -680,29 +339,11 @@ Finished Flattening Before IO Insertion
 ---------------------------------------------------------------------------------
 Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6064] Net \memory/memory/data_we  is driving 128 big block pins (URAM, BRAM and DSP loads). Created 13 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [0] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [1] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [2] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [3] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [4] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [5] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [6] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [7] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [8] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [9] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [10] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [11] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [12] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [13] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [14] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/iaddr [15] is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
-INFO: [Synth 8-6064] Net \memory/memory/mem_out_i0  is driving 32 big block pins (URAM, BRAM and DSP loads). Created 4 replicas of its driver. 
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 295 ; free virtual = 4290
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11112
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -715,7 +356,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 295 ; free virtual = 4290
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11112
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -727,40 +368,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 295 ; free virtual = 4290
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11112
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 294 ; free virtual = 4289
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 294 ; free virtual = 4289
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 294 ; free virtual = 4289
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
-Start ROM, RAM, DSP and Shift Register Reporting
----------------------------------------------------------------------------------
-
-Static Shift Register Report:
-+------------+-------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|Module Name | RTL Name                                              | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
-+------------+-------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|lc4_system  | vga_cntrl_inst/v_out_inst/VGA_HSYNCH_reg/state_reg[0] | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
-|lc4_system  | vga_cntrl_inst/v_out_inst/VGA_VSYNCH_reg/state_reg[0] | 3      | 1     | NO           | NO                 | YES               | 1      | 0       | 
-+------------+-------------------------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-
----------------------------------------------------------------------------------
-Finished ROM, RAM, DSP and Shift Register Reporting
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -773,140 +399,130 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+------------+------+
-|      |Cell        |Count |
-+------+------------+------+
-|1     |BUFG        |     4|
-|2     |CARRY4      |   122|
-|3     |DSP48E1     |     1|
-|4     |LUT1        |    53|
-|5     |LUT2        |   253|
-|6     |LUT3        |   216|
-|7     |LUT4        |   482|
-|8     |LUT5        |   279|
-|9     |LUT6        |   676|
-|10    |MMCME2_ADV  |     1|
-|11    |MUXF7       |    32|
-|12    |RAMB18E1    |     1|
-|13    |RAMB36E1    |    16|
-|14    |RAMB36E1_1  |     1|
-|15    |RAMB36E1_10 |     1|
-|16    |RAMB36E1_11 |     1|
-|17    |RAMB36E1_12 |     1|
-|18    |RAMB36E1_13 |     1|
-|19    |RAMB36E1_14 |     1|
-|20    |RAMB36E1_15 |     1|
-|21    |RAMB36E1_16 |     1|
-|22    |RAMB36E1_17 |     7|
-|23    |RAMB36E1_2  |     1|
-|24    |RAMB36E1_3  |     1|
-|25    |RAMB36E1_4  |     1|
-|26    |RAMB36E1_5  |     1|
-|27    |RAMB36E1_6  |     1|
-|28    |RAMB36E1_7  |     1|
-|29    |RAMB36E1_8  |     1|
-|30    |RAMB36E1_9  |     1|
-|31    |SRL16E      |     2|
-|32    |FDRE        |   288|
-|33    |IBUF        |    14|
-|34    |OBUF        |    22|
-+------+------------+------+
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |   116|
+|3     |DSP48E1 |     1|
+|4     |LUT1    |    14|
+|5     |LUT2    |   261|
+|6     |LUT3    |   114|
+|7     |LUT4    |   534|
+|8     |LUT5    |   334|
+|9     |LUT6    |   485|
+|10    |MUXF7   |    23|
+|11    |FDRE    |   419|
+|12    |FDSE    |    14|
+|13    |IBUF    |    43|
+|14    |OBUF    |   148|
++------+--------+------+
 
 Report Instance Areas: 
-+------+------------------------+----------------------------+------+
-|      |Instance                |Module                      |Cells |
-+------+------------------------+----------------------------+------+
-|1     |top                     |                            |  2485|
-|2     |  fake_kbd_inst         |fake_pb_kbd                 |    42|
-|3     |    kbdr_reg            |Nbit_reg                    |     6|
-|4     |    kbsr_reg            |Nbit_reg__parameterized0_26 |     2|
-|5     |    op_c                |onepulse_fsm                |     9|
-|6     |      state_reg         |Nbit_reg__parameterized5_34 |     9|
-|7     |    op_d                |onepulse_fsm_27             |     8|
-|8     |      state_reg         |Nbit_reg__parameterized5_33 |     8|
-|9     |    op_l                |onepulse_fsm_28             |     5|
-|10    |      state_reg         |Nbit_reg__parameterized5_32 |     5|
-|11    |    op_r                |onepulse_fsm_29             |     6|
-|12    |      state_reg         |Nbit_reg__parameterized5_31 |     6|
-|13    |    op_u                |onepulse_fsm_30             |     6|
-|14    |      state_reg         |Nbit_reg__parameterized5    |     6|
-|15    |  gwe_cleaner           |Nbit_reg__parameterized0    |     1|
-|16    |  memory                |lc4_memory                  |  1530|
-|17    |    memory              |bram                        |  1530|
-|18    |      i1out_reg         |Nbit_reg__parameterized4    |  1485|
-|19    |  mmcm0                 |mmcm_clock_wizard           |     6|
-|20    |  proc_inst             |lc4_processor               |   542|
-|21    |    alu                 |lc4_alu                     |    93|
-|22    |      a                 |lc4_divider                 |    92|
-|23    |        \genblk1[0].l   |lc4_divider_one_iter        |     2|
-|24    |        \genblk1[10].l  |lc4_divider_one_iter_11     |     6|
-|25    |        \genblk1[11].l  |lc4_divider_one_iter_12     |     6|
-|26    |        \genblk1[12].l  |lc4_divider_one_iter_13     |     6|
-|27    |        \genblk1[13].l  |lc4_divider_one_iter_14     |     6|
-|28    |        \genblk1[14].l  |lc4_divider_one_iter_15     |     6|
-|29    |        \genblk1[15].l  |lc4_divider_one_iter_16     |     6|
-|30    |        \genblk1[1].l   |lc4_divider_one_iter_17     |     6|
-|31    |        \genblk1[2].l   |lc4_divider_one_iter_18     |     6|
-|32    |        \genblk1[3].l   |lc4_divider_one_iter_19     |     6|
-|33    |        \genblk1[4].l   |lc4_divider_one_iter_20     |     6|
-|34    |        \genblk1[5].l   |lc4_divider_one_iter_21     |     6|
-|35    |        \genblk1[6].l   |lc4_divider_one_iter_22     |     6|
-|36    |        \genblk1[7].l   |lc4_divider_one_iter_23     |     6|
-|37    |        \genblk1[8].l   |lc4_divider_one_iter_24     |     6|
-|38    |        \genblk1[9].l   |lc4_divider_one_iter_25     |     6|
-|39    |    nzp_reg             |Nbit_reg__parameterized3    |     4|
-|40    |    pc_reg              |Nbit_reg__parameterized1    |    58|
-|41    |    regFile             |lc4_regfile                 |   387|
-|42    |      r0                |Nbit_reg__parameterized2_3  |    16|
-|43    |      r1                |Nbit_reg__parameterized2_4  |    16|
-|44    |      r2                |Nbit_reg__parameterized2_5  |    16|
-|45    |      r3                |Nbit_reg__parameterized2_6  |    32|
-|46    |      r4                |Nbit_reg__parameterized2_7  |    16|
-|47    |      r5                |Nbit_reg__parameterized2_8  |    16|
-|48    |      r6                |Nbit_reg__parameterized2_9  |    16|
-|49    |      r7                |Nbit_reg__parameterized2_10 |   259|
-|50    |  timer                 |timer_device                |   118|
-|51    |    counter_reg         |Nbit_reg__parameterized6    |   102|
-|52    |    interval_reg        |Nbit_reg__parameterized2    |    16|
-|53    |  vga_cntrl_inst        |vga_controller              |    97|
-|54    |    svga_t_g            |svga_timing_generation      |    83|
-|55    |    v_out_inst          |video_out                   |    14|
-|56    |      VGA_HSYNCH_reg    |Nbit_reg__parameterized7    |     1|
-|57    |      VGA_OUT_BLUE_reg  |Nbit_reg__parameterized8    |     4|
-|58    |      VGA_OUT_GREEN_reg |Nbit_reg__parameterized8_0  |     4|
-|59    |      VGA_OUT_RED_reg   |Nbit_reg__parameterized8_1  |     4|
-|60    |      VGA_VSYNCH_reg    |Nbit_reg__parameterized7_2  |     1|
-|61    |  we_gen                |lc4_we_gen                  |    97|
-|62    |    global_we_count     |count                       |    97|
-+------+------------------------+----------------------------+------+
++------+----------------------+----------------------------+------+
+|      |Instance              |Module                      |Cells |
++------+----------------------+----------------------------+------+
+|1     |top                   |                            |  2507|
+|2     |  alu                 |lc4_alu                     |    93|
+|3     |    a                 |lc4_divider                 |    92|
+|4     |      \genblk1[0].l   |lc4_divider_one_iter        |     2|
+|5     |      \genblk1[10].l  |lc4_divider_one_iter_48     |     6|
+|6     |      \genblk1[11].l  |lc4_divider_one_iter_49     |     6|
+|7     |      \genblk1[12].l  |lc4_divider_one_iter_50     |     6|
+|8     |      \genblk1[13].l  |lc4_divider_one_iter_51     |     6|
+|9     |      \genblk1[14].l  |lc4_divider_one_iter_52     |     6|
+|10    |      \genblk1[15].l  |lc4_divider_one_iter_53     |     6|
+|11    |      \genblk1[1].l   |lc4_divider_one_iter_54     |     6|
+|12    |      \genblk1[2].l   |lc4_divider_one_iter_55     |     6|
+|13    |      \genblk1[3].l   |lc4_divider_one_iter_56     |     6|
+|14    |      \genblk1[4].l   |lc4_divider_one_iter_57     |     6|
+|15    |      \genblk1[5].l   |lc4_divider_one_iter_58     |     6|
+|16    |      \genblk1[6].l   |lc4_divider_one_iter_59     |     6|
+|17    |      \genblk1[7].l   |lc4_divider_one_iter_60     |     6|
+|18    |      \genblk1[8].l   |lc4_divider_one_iter_61     |     6|
+|19    |      \genblk1[9].l   |lc4_divider_one_iter_62     |     6|
+|20    |  nzp_reg             |Nbit_reg__parameterized5    |     5|
+|21    |  pc_reg              |Nbit_reg                    |    25|
+|22    |  regFile             |lc4_regfile                 |   225|
+|23    |    r0                |Nbit_reg__parameterized4    |    17|
+|24    |    r1                |Nbit_reg__parameterized4_41 |    16|
+|25    |    r2                |Nbit_reg__parameterized4_42 |    16|
+|26    |    r3                |Nbit_reg__parameterized4_43 |    48|
+|27    |    r4                |Nbit_reg__parameterized4_44 |    16|
+|28    |    r5                |Nbit_reg__parameterized4_45 |    16|
+|29    |    r6                |Nbit_reg__parameterized4_46 |    16|
+|30    |    r7                |Nbit_reg__parameterized4_47 |    80|
+|31    |  reg_alu_ir          |Nbit_reg__parameterized0    |   403|
+|32    |  reg_alu_is_branch   |Nbit_reg__parameterized2    |     1|
+|33    |  reg_alu_is_load     |Nbit_reg__parameterized2_0  |     1|
+|34    |  reg_alu_is_store    |Nbit_reg__parameterized2_1  |     1|
+|35    |  reg_alu_nzp_we      |Nbit_reg__parameterized2_2  |     1|
+|36    |  reg_alu_pc          |Nbit_reg_3                  |    16|
+|37    |  reg_alu_r1sel       |Nbit_reg__parameterized1    |     5|
+|38    |  reg_alu_r2sel       |Nbit_reg__parameterized1_4  |     3|
+|39    |  reg_alu_regfile_we  |Nbit_reg__parameterized2_5  |     1|
+|40    |  reg_alu_rs          |Nbit_reg__parameterized0_6  |    16|
+|41    |  reg_alu_rt          |Nbit_reg__parameterized0_7  |    16|
+|42    |  reg_alu_stall       |Nbit_reg__parameterized3    |     1|
+|43    |  reg_alu_wsel        |Nbit_reg__parameterized1_8  |     3|
+|44    |  reg_insn_ir         |Nbit_reg__parameterized0_9  |    32|
+|45    |  reg_insn_is_branch  |Nbit_reg__parameterized2_10 |     4|
+|46    |  reg_insn_is_load    |Nbit_reg__parameterized2_11 |     2|
+|47    |  reg_insn_is_store   |Nbit_reg__parameterized2_12 |     2|
+|48    |  reg_insn_nzp_we     |Nbit_reg__parameterized2_13 |     2|
+|49    |  reg_insn_pc         |Nbit_reg_14                 |    17|
+|50    |  reg_insn_r1sel      |Nbit_reg__parameterized1_15 |     6|
+|51    |  reg_insn_r2sel      |Nbit_reg__parameterized1_16 |     6|
+|52    |  reg_insn_regfile_we |Nbit_reg__parameterized2_17 |     2|
+|53    |  reg_insn_stall      |Nbit_reg__parameterized3_18 |     2|
+|54    |  reg_insn_wsel       |Nbit_reg__parameterized1_19 |     6|
+|55    |  reg_mem_alu         |Nbit_reg__parameterized0_20 |  1152|
+|56    |  reg_mem_ir          |Nbit_reg__parameterized0_21 |    17|
+|57    |  reg_mem_is_load     |Nbit_reg__parameterized2_22 |    17|
+|58    |  reg_mem_is_store    |Nbit_reg__parameterized2_23 |    17|
+|59    |  reg_mem_nzp_we      |Nbit_reg__parameterized2_24 |     1|
+|60    |  reg_mem_pc          |Nbit_reg_25                 |    16|
+|61    |  reg_mem_regfile_we  |Nbit_reg__parameterized2_26 |     1|
+|62    |  reg_mem_rt          |Nbit_reg__parameterized0_27 |    16|
+|63    |  reg_mem_stall       |Nbit_reg__parameterized3_28 |     3|
+|64    |  reg_mem_wsel        |Nbit_reg__parameterized1_29 |     4|
+|65    |  reg_w_alu           |Nbit_reg__parameterized0_30 |    16|
+|66    |  reg_w_data          |Nbit_reg__parameterized0_31 |    34|
+|67    |  reg_w_data_addr     |Nbit_reg__parameterized0_32 |    16|
+|68    |  reg_w_dmem_we       |Nbit_reg__parameterized2_33 |     1|
+|69    |  reg_w_ir            |Nbit_reg__parameterized0_34 |    17|
+|70    |  reg_w_is_load       |Nbit_reg__parameterized2_35 |     1|
+|71    |  reg_w_nzp_we        |Nbit_reg__parameterized2_36 |     1|
+|72    |  reg_w_pc            |Nbit_reg_37                 |    51|
+|73    |  reg_w_regfile_we    |Nbit_reg__parameterized2_38 |     1|
+|74    |  reg_w_stall         |Nbit_reg__parameterized3_39 |     3|
+|75    |  reg_w_wsel          |Nbit_reg__parameterized1_40 |    33|
++------+----------------------+----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1749.660 ; gain = 586.367 ; free physical = 294 ; free virtual = 4289
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1355 ; free virtual = 11113
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 27 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:00:49 . Memory (MB): peak = 1749.660 ; gain = 213.555 ; free physical = 361 ; free virtual = 4356
-Synthesis Optimization Complete : Time (s): cpu = 00:00:54 ; elapsed = 00:01:07 . Memory (MB): peak = 1749.668 ; gain = 586.367 ; free physical = 368 ; free virtual = 4363
+Synthesis finished with 0 errors, 0 critical warnings and 16 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.758 ; gain = 387.480 ; free physical = 1356 ; free virtual = 11114
+Synthesis Optimization Complete : Time (s): cpu = 00:00:26 ; elapsed = 00:00:36 . Memory (MB): peak = 1550.766 ; gain = 387.480 ; free physical = 1364 ; free virtual = 11122
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 210 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 183 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-Parsing XDC File [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lab4-pipeline.xdc]
-Finished Parsing XDC File [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/system/lab4-pipeline.xdc]
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-186 Infos, 41 Warnings, 0 Critical Warnings and 0 Errors encountered.
+64 Infos, 16 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:01:09 . Memory (MB): peak = 1781.676 ; gain = 631.770 ; free physical = 395 ; free virtual = 4392
+synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:38 . Memory (MB): peak = 1609.785 ; gain = 459.879 ; free physical = 1348 ; free virtual = 11105
 # report_timing_summary -file $outputDir/post_synth_timing_summary_report.txt
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-INFO: [Timing 38-2] Deriving generated clocks
 INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
-report_timing_summary: Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 2063.875 ; gain = 282.199 ; free physical = 256 ; free virtual = 4131
+report_timing_summary: Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1989.984 ; gain = 380.199 ; free physical = 953 ; free virtual = 10711
 # report_utilization -file $outputDir/post_synth_utilization.txt
-report_utilization: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2063.875 ; gain = 0.000 ; free physical = 257 ; free virtual = 4132
+report_utilization: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.07 . Memory (MB): peak = 1989.984 ; gain = 0.000 ; free physical = 953 ; free virtual = 10710
 # report_drc -file $outputDir/post_synth_drc_report.txt
 Command: report_drc -file ./output/post_synth_drc_report.txt
 INFO: [IP_Flow 19-234] Refreshing IP repositories
@@ -920,484 +536,4 @@ Synthesis complete!
 # if {[get_file_contents .step] == "synthesis"} {
 #     exit
 # }
-# opt_design
-Command: opt_design
-Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
-INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
-Running DRC as a precondition to command opt_design
-
-Starting DRC Task
-INFO: [DRC 23-27] Running DRC with 8 threads
-INFO: [Project 1-461] DRC finished with 0 Errors
-INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
-
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 237 ; free virtual = 4114
-
-Starting Logic Optimization Task
-
-Phase 1 Retarget
-INFO: [Opt 31-138] Pushed 4 inverter(s) to 32 load pin(s).
-INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 1 Retarget | Checksum: 1996240c8
-
-Time (s): cpu = 00:00:00.25 ; elapsed = 00:00:00.15 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4121
-INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 4 cells
-
-Phase 2 Constant propagation
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Phase 2 Constant propagation | Checksum: 1996240c8
-
-Time (s): cpu = 00:00:00.30 ; elapsed = 00:00:00.20 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
-
-Phase 3 Sweep
-Phase 3 Sweep | Checksum: 11277e2be
-
-Time (s): cpu = 00:00:00.35 ; elapsed = 00:00:00.25 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
-
-Phase 4 BUFG optimization
-Phase 4 BUFG optimization | Checksum: 11277e2be
-
-Time (s): cpu = 00:00:00.42 ; elapsed = 00:00:00.33 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
-
-Phase 5 Shift Register Optimization
-Phase 5 Shift Register Optimization | Checksum: 11277e2be
-
-Time (s): cpu = 00:00:00.44 ; elapsed = 00:00:00.35 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
-
-Starting Connectivity Check Task
-
-Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-Ending Logic Optimization Task | Checksum: 11277e2be
-
-Time (s): cpu = 00:00:00.48 ; elapsed = 00:00:00.39 . Memory (MB): peak = 2168.438 ; gain = 0.000 ; free physical = 243 ; free virtual = 4120
-
-Starting Power Optimization Task
-INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-INFO: [Physopt 32-619] Estimated Timing Summary | WNS=2.381 | TNS=0.000 |
-Running Vector-less Activity Propagation...
-
-Finished Running Vector-less Activity Propagation
-INFO: [Pwropt 34-9] Applying IDT optimizations ...
-INFO: [Pwropt 34-10] Applying ODC optimizations ...
-
-
-Starting PowerOpt Patch Enables Task
-INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 40 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
-INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
-Number of BRAM Ports augmented: 24 newly gated: 0 Total Ports: 80
-Number of Flops added for Enable Generation: 1
-
-Ending PowerOpt Patch Enables Task | Checksum: 19e00e163
-
-Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.13 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 300 ; free virtual = 4077
-Ending Power Optimization Task | Checksum: 19e00e163
-
-Time (s): cpu = 00:00:13 ; elapsed = 00:00:11 . Memory (MB): peak = 2449.602 ; gain = 281.164 ; free physical = 307 ; free virtual = 4084
-
-Starting Logic Optimization Task
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-
-Phase 1 Remap
-Phase 1 Remap | Checksum: 1f12ad241
-
-Time (s): cpu = 00:00:00.50 ; elapsed = 00:00:00.35 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 311 ; free virtual = 4089
-INFO: [Opt 31-389] Phase Remap created 16 cells and removed 32 cells
-Ending Logic Optimization Task | Checksum: 1f12ad241
-
-Time (s): cpu = 00:00:00.52 ; elapsed = 00:00:00.36 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 311 ; free virtual = 4089
-INFO: [Common 17-83] Releasing license: Implementation
-22 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
-opt_design completed successfully
-opt_design: Time (s): cpu = 00:00:15 ; elapsed = 00:00:13 . Memory (MB): peak = 2449.602 ; gain = 281.164 ; free physical = 311 ; free virtual = 4089
-# place_design
-Command: place_design
-Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
-INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
-INFO: [DRC 23-27] Running DRC with 8 threads
-INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
-INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
-Running DRC as a precondition to command place_design
-INFO: [DRC 23-27] Running DRC with 8 threads
-INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
-INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
-
-Starting Placer Task
-INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
-
-Phase 1 Placer Initialization
-
-Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 304 ; free virtual = 4084
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 78330c0b
-
-Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 304 ; free virtual = 4084
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 306 ; free virtual = 4086
-
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: b69619bb
-
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.95 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 302 ; free virtual = 4084
-
-Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: b9ef24d2
-
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 297 ; free virtual = 4079
-
-Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: b9ef24d2
-
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 297 ; free virtual = 4080
-Phase 1 Placer Initialization | Checksum: b9ef24d2
-
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 297 ; free virtual = 4080
-
-Phase 2 Global Placement
-Phase 2 Global Placement | Checksum: 1d577553d
-
-Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 279 ; free virtual = 4057
-
-Phase 3 Detail Placement
-
-Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: 1d577553d
-
-Time (s): cpu = 00:00:09 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 279 ; free virtual = 4057
-
-Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1297a341f
-
-Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 278 ; free virtual = 4056
-
-Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 5725c724
-
-Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 278 ; free virtual = 4056
-
-Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 5725c724
-
-Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 278 ; free virtual = 4056
-
-Phase 3.5 Timing Path Optimizer
-Phase 3.5 Timing Path Optimizer | Checksum: 5725c724
-
-Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 278 ; free virtual = 4056
-
-Phase 3.6 Fast Optimization
-Phase 3.6 Fast Optimization | Checksum: e9f69701
-
-Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 329 ; free virtual = 4062
-
-Phase 3.7 Small Shape Detail Placement
-Phase 3.7 Small Shape Detail Placement | Checksum: 173a1704e
-
-Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 325 ; free virtual = 4059
-
-Phase 3.8 Re-assign LUT pins
-Phase 3.8 Re-assign LUT pins | Checksum: 179b78822
-
-Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 325 ; free virtual = 4059
-
-Phase 3.9 Pipeline Register Optimization
-Phase 3.9 Pipeline Register Optimization | Checksum: 179b78822
-
-Time (s): cpu = 00:00:12 ; elapsed = 00:00:06 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 325 ; free virtual = 4059
-
-Phase 3.10 Fast Optimization
-Phase 3.10 Fast Optimization | Checksum: 1b69d32b4
-
-Time (s): cpu = 00:00:15 ; elapsed = 00:00:09 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 329 ; free virtual = 4058
-Phase 3 Detail Placement | Checksum: 1b69d32b4
-
-Time (s): cpu = 00:00:15 ; elapsed = 00:00:09 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 329 ; free virtual = 4058
-
-Phase 4 Post Placement Optimization and Clean-Up
-
-Phase 4.1 Post Commit Optimization
-INFO: [Timing 38-35] Done setting XDC timing constraints.
-
-Phase 4.1.1 Post Placement Optimization
-Post Placement Optimization Initialization | Checksum: 190411b82
-
-Phase 4.1.1.1 BUFG Insertion
-INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
-INFO: [Place 46-31] BUFG insertion identified 0 candidate nets, 0 success, 0 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason.
-Phase 4.1.1.1 BUFG Insertion | Checksum: 190411b82
-
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:09 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-INFO: [Place 30-746] Post Placement Timing Summary WNS=0.278. For the most accurate timing information please run report_timing.
-Phase 4.1.1 Post Placement Optimization | Checksum: 102533264
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-Phase 4.1 Post Commit Optimization | Checksum: 102533264
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 326 ; free virtual = 4056
-
-Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 102533264
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-
-Phase 4.3 Placer Reporting
-Phase 4.3 Placer Reporting | Checksum: 102533264
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-
-Phase 4.4 Final Placement Cleanup
-Phase 4.4 Final Placement Cleanup | Checksum: 107dd44e0
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 107dd44e0
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:19 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 327 ; free virtual = 4056
-Ending Placer Task | Checksum: 1c4f6da4
-
-Time (s): cpu = 00:00:27 ; elapsed = 00:00:19 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 340 ; free virtual = 4069
-INFO: [Common 17-83] Releasing license: Implementation
-16 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
-place_design completed successfully
-place_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:19 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 340 ; free virtual = 4069
-# route_design
-Command: route_design
-Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
-INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
-Running DRC as a precondition to command route_design
-INFO: [DRC 23-27] Running DRC with 8 threads
-INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
-INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
-
-
-Starting Routing Task
-INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
-Checksum: PlaceDB: b6e4f51 ConstDB: 0 ShapeSum: 10e11e53 RouteDB: 0
-
-Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: 93fe176a
-
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 219 ; free virtual = 3949
-Post Restoration Checksum: NetGraph: 233a2a16 NumContArr: 70c3ed54 Constraints: 0 Timing: 0
-
-Phase 2 Router Initialization
-
-Phase 2.1 Create Timer
-Phase 2.1 Create Timer | Checksum: 93fe176a
-
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:13 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 219 ; free virtual = 3949
-
-Phase 2.2 Fix Topology Constraints
-Phase 2.2 Fix Topology Constraints | Checksum: 93fe176a
-
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 188 ; free virtual = 3918
-
-Phase 2.3 Pre Route Cleanup
-Phase 2.3 Pre Route Cleanup | Checksum: 93fe176a
-
-Time (s): cpu = 00:00:16 ; elapsed = 00:00:14 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 188 ; free virtual = 3918
- Number of Nodes with overlaps = 0
-
-Phase 2.4 Update Timing
-Phase 2.4 Update Timing | Checksum: 103f5cfbb
-
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 185 ; free virtual = 3906
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=1.701  | TNS=0.000  | WHS=-0.088 | THS=-1.390 |
-
-Phase 2 Router Initialization | Checksum: 17074124c
-
-Time (s): cpu = 00:00:18 ; elapsed = 00:00:14 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 182 ; free virtual = 3903
-
-Phase 3 Initial Routing
-Phase 3 Initial Routing | Checksum: 1a365645c
-
-Time (s): cpu = 00:00:58 ; elapsed = 00:00:23 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 372 ; free virtual = 3904
-
-Phase 4 Rip-up And Reroute
-
-Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 881
- Number of Nodes with overlaps = 267
- Number of Nodes with overlaps = 87
- Number of Nodes with overlaps = 6
- Number of Nodes with overlaps = 1
- Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-6.809 | TNS=-3359.551| WHS=N/A    | THS=N/A    |
-
-Phase 4.1 Global Iteration 0 | Checksum: 201edccf2
-
-Time (s): cpu = 00:01:22 ; elapsed = 00:00:33 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 397 ; free virtual = 3929
-
-Phase 4.2 Global Iteration 1
- Number of Nodes with overlaps = 928
- Number of Nodes with overlaps = 94
- Number of Nodes with overlaps = 25
- Number of Nodes with overlaps = 1
- Number of Nodes with overlaps = 4
- Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-8.356 | TNS=-4618.875| WHS=N/A    | THS=N/A    |
-
-Phase 4.2 Global Iteration 1 | Checksum: 11b8d785e
-
-Time (s): cpu = 00:01:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 395 ; free virtual = 3928
-Phase 4 Rip-up And Reroute | Checksum: 11b8d785e
-
-Time (s): cpu = 00:01:31 ; elapsed = 00:00:37 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 395 ; free virtual = 3928
-
-Phase 5 Delay and Skew Optimization
-
-Phase 5.1 Delay CleanUp
-
-Phase 5.1.1 Update Timing
-Phase 5.1.1 Update Timing | Checksum: 17f96bd34
-
-Time (s): cpu = 00:01:32 ; elapsed = 00:00:37 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 395 ; free virtual = 3927
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-6.694 | TNS=-3279.016| WHS=N/A    | THS=N/A    |
-
- Number of Nodes with overlaps = 0
-Phase 5.1 Delay CleanUp | Checksum: 211570c2b
-
-Time (s): cpu = 00:01:51 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-
-Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 211570c2b
-
-Time (s): cpu = 00:01:51 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-Phase 5 Delay and Skew Optimization | Checksum: 211570c2b
-
-Time (s): cpu = 00:01:51 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-
-Phase 6 Post Hold Fix
-
-Phase 6.1 Hold Fix Iter
-
-Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 208e07115
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=-6.304 | TNS=-2973.836| WHS=0.185  | THS=0.000  |
-
-Phase 6.1 Hold Fix Iter | Checksum: 208e07115
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-Phase 6 Post Hold Fix | Checksum: 208e07115
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-
-Phase 7 Route finalize
-
-Router Utilization Summary
-  Global Vertical Routing Utilization    = 1.31697 %
-  Global Horizontal Routing Utilization  = 1.8788 %
-  Routable Net Status*
-  *Does not include unroutable nets such as driverless and loadless.
-  Run report_route_status for detailed report.
-  Number of Failed Nets               = 0
-  Number of Unrouted Nets             = 0
-  Number of Partially Routed Nets     = 0
-  Number of Node Overlaps             = 0
-
-Utilization threshold used for congestion level computation: 0.85
-Congestion Report
-North Dir 1x1 Area, Max Cong = 60.3604%, No Congested Regions.
-South Dir 1x1 Area, Max Cong = 66.6667%, No Congested Regions.
-East Dir 1x1 Area, Max Cong = 70.5882%, No Congested Regions.
-West Dir 1x1 Area, Max Cong = 80.8824%, No Congested Regions.
-Phase 7 Route finalize | Checksum: 2793617bb
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 366 ; free virtual = 3898
-
-Phase 8 Verifying routed nets
-
- Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 2793617bb
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 365 ; free virtual = 3897
-
-Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 21f50d42a
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 365 ; free virtual = 3897
-
-Phase 10 Post Router Timing
-INFO: [Route 35-57] Estimated Timing Summary | WNS=-6.304 | TNS=-2973.836| WHS=0.185  | THS=0.000  |
-
-WARNING: [Route 35-328] Router estimated timing not met.
-Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
-Phase 10 Post Router Timing | Checksum: 21f50d42a
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 365 ; free virtual = 3897
-INFO: [Route 35-16] Router Completed Successfully
-
-Time (s): cpu = 00:01:52 ; elapsed = 00:00:41 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 427 ; free virtual = 3959
-
-Routing Is Done.
-INFO: [Common 17-83] Releasing license: Implementation
-13 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
-route_design completed successfully
-route_design: Time (s): cpu = 00:01:54 ; elapsed = 00:00:42 . Memory (MB): peak = 2449.602 ; gain = 0.000 ; free physical = 427 ; free virtual = 3959
-# puts "Implementation complete!"
-Implementation complete!
-# report_power -file $outputDir/post_route_power_report.txt
-Command: report_power -file ./output/post_route_power_report.txt
-Running Vector-less Activity Propagation...
-
-Finished Running Vector-less Activity Propagation
-0 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
-report_power completed successfully
-# report_clocks -file $outputDir/post_route_clocks_report.txt
-# report_design_analysis -file $outputDir/post_route_design_analysis_report.txt
-report_design_analysis: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2580.625 ; gain = 0.000 ; free physical = 416 ; free virtual = 3947
-# report_utilization -file $outputDir/post_route_utilization_report.txt
-report_utilization: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2580.625 ; gain = 0.000 ; free physical = 418 ; free virtual = 3947
-# report_route_status -file $outputDir/post_route_status_report.txt
-# report_timing -file $outputDir/post_route_timing_report.txt
-INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: max.
-INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
-INFO: [Timing 38-78] ReportTimingParams: -max_paths 1 -nworst 1 -delay_type max -sort_by slack.
-# report_timing_summary -file $outputDir/post_route_timing_summary_report.txt
-INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
-INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
-# report_drc -file $outputDir/post_route_drc_report.txt
-Command: report_drc -file ./output/post_route_drc_report.txt
-INFO: [IP_Flow 19-1839] IP Catalog is up to date.
-INFO: [DRC 23-27] Running DRC with 8 threads
-INFO: [Coretcl 2-168] The results of DRC are in file /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/output/post_route_drc_report.txt.
-report_drc completed successfully
-# write_bitstream -force $outputDir/[get_file_contents .bitstream-filename]
-Command: write_bitstream -force ./output/pipeline.bit
-Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
-INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
-Running DRC as a precondition to command write_bitstream
-INFO: [IP_Flow 19-1839] IP Catalog is up to date.
-INFO: [DRC 23-27] Running DRC with 8 threads
-WARNING: [DRC DPIP-1] Input pipelining: DSP proc_inst/alu/mul_o input proc_inst/alu/mul_o/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPIP-1] Input pipelining: DSP proc_inst/alu/mul_o input proc_inst/alu/mul_o/B[17:0] is not pipelined. Pipelining DSP48 input will improve performance.
-WARNING: [DRC DPOP-1] PREG Output pipelining: DSP proc_inst/alu/mul_o output proc_inst/alu/mul_o/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
-WARNING: [DRC DPOP-2] MREG Output pipelining: DSP proc_inst/alu/mul_o multiplier stage proc_inst/alu/mul_o/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
-WARNING: [DRC ZPS7-1] PS7 block required: The PS7 cell must be used in this Zynq design in order to enable correct default configuration.
-INFO: [Vivado 12-3199] DRC finished with 0 Errors, 5 Warnings
-INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
-INFO: [Project 1-821] Please set project.enableDesignId to be 'true'.
-INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
-Loading data files...
-Loading site data...
-Loading route data...
-Processing options...
-Creating bitmap...
-Creating bitstream...
-Writing bitstream ./output/pipeline.bit...
-INFO: [Vivado 12-1842] Bitgen Completed Successfully.
-INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK part without a full Vivado license. To see the specific WebTalk data collected for your design, open the usage_statistics_webtalk.html or usage_statistics_webtalk.xml file in the implementation directory.
-INFO: [Common 17-83] Releasing license: Implementation
-10 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
-write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:17 ; elapsed = 00:02:20 . Memory (MB): peak = 2630.348 ; gain = 49.723 ; free physical = 592 ; free virtual = 3869
-# puts "Writing bitstream complete!"
-Writing bitstream complete!
-INFO: [Common 17-206] Exiting Vivado at Sun Mar 29 13:08:34 2020...
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 30 15:37:49 2020...

@@ -1,0 +1,73 @@
+Vivado Simulator 2017.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: /home1/c/cis371/software/Vivado/2017.4/bin/unwrapped/lnx64.o/xelab -cc gcc --debug off --prj .prj --snapshot snapshot.sim --lib mylib mylib.test_processor 
+Multi-threading is on. Using 6 slave threads.
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/.set_testcase.v" into library mylib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v" into library mylib
+INFO: [VRFC 10-311] analyzing module cla_box
+INFO: [VRFC 10-311] analyzing module lc4_alu
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_cla.v" into library mylib
+INFO: [VRFC 10-311] analyzing module gp1
+INFO: [VRFC 10-311] analyzing module gp4
+INFO: [VRFC 10-311] analyzing module cla16
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_decoder.v" into library mylib
+INFO: [VRFC 10-311] analyzing module lc4_decoder
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_divider.v" into library mylib
+INFO: [VRFC 10-311] analyzing module lc4_divider
+INFO: [VRFC 10-311] analyzing module lc4_divider_one_iter
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_regfile.v" into library mylib
+INFO: [VRFC 10-311] analyzing module lc4_regfile
+INFO: [VRFC 10-311] analyzing module Nbit_mux8to1
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v" into library mylib
+INFO: [VRFC 10-311] analyzing module lc4_processor
+WARNING: [VRFC 10-756] identifier reg_mem_alu_out is used before its declaration [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:135]
+WARNING: [VRFC 10-756] identifier reg_mem_alu_out is used before its declaration [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:136]
+WARNING: [VRFC 10-756] identifier reg_mem_alu_out is used before its declaration [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:146]
+WARNING: [VRFC 10-756] identifier reg_w_nzp_we_out is used before its declaration [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:147]
+WARNING: [VRFC 10-756] identifier reg_mem_nzp_we_out is used before its declaration [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:148]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/register.v" into library mylib
+INFO: [VRFC 10-311] analyzing module Nbit_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/lc4_memory.v" into library mylib
+INFO: [VRFC 10-311] analyzing module lc4_memory
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/clock_util.v" into library mylib
+INFO: [VRFC 10-311] analyzing module count
+INFO: [VRFC 10-311] analyzing module lc4_we_gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/delay_eight_cycles.v" into library mylib
+INFO: [VRFC 10-311] analyzing module delay_eight_cycles
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v" into library mylib
+INFO: [VRFC 10-311] analyzing module bram
+INFO: [VRFC 10-2263] Analyzing Verilog file "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/testbench_lc4_processor.v" into library mylib
+INFO: [VRFC 10-311] analyzing module test_processor
+Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 16 differs from formal bit length 1 for port cin [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_alu.v:53]
+WARNING: [VRFC 10-1770] port i2out remains unconnected for this instance [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/testbench_lc4_processor.v:75]
+WARNING: [VRFC 10-1770] port led_data remains unconnected for this instance [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/testbench_lc4_processor.v:94]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module mylib.count
+Compiling module mylib.lc4_we_gen
+Compiling module mylib.Nbit_reg(n=16,r=16'b0)
+Compiling module mylib.bram
+Compiling module mylib.Nbit_reg(n=16)
+Compiling module mylib.delay_eight_cycles(n=16)
+Compiling module mylib.lc4_memory
+Compiling module mylib.Nbit_reg(n=16,r=16'b100000100000...
+Compiling module mylib.lc4_decoder
+Compiling module mylib.Nbit_reg(n=3,r=3'b0)
+Compiling module mylib.Nbit_reg(r=1'b0)
+Compiling module mylib.Nbit_reg(n=2,r=2'b10)
+Compiling module mylib.Nbit_mux8to1
+Compiling module mylib.lc4_regfile
+Compiling module mylib.lc4_divider_one_iter
+Compiling module mylib.lc4_divider_default
+Compiling module mylib.gp1
+Compiling module mylib.gp4
+Compiling module mylib.cla16_default
+Compiling module mylib.cla_box
+Compiling module mylib.lc4_alu
+Compiling module mylib.Nbit_reg(n=3)
+Compiling module mylib.lc4_processor
+Compiling module mylib.test_processor
+Built simulation snapshot snapshot.sim

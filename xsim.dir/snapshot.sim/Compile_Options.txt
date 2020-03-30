@@ -1,0 +1,1 @@
+-cc "gcc" --debug "off" --prj ".prj" --snapshot "snapshot.sim" --lib "mylib" "mylib.test_processor" 

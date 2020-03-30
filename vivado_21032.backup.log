@@ -1,0 +1,69 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon Mar 30 15:29:25 2020
+# Process ID: 21032
+# Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
+# Command line: vivado -mode batch -source ../common/tcl/build.tcl
+# Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.log
+# Journal file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/vivado.jou
+#-----------------------------------------------------------
+source ../common/tcl/build.tcl
+# set outputDir ./output
+# file mkdir $outputDir
+# proc get_file_contents { filename } {
+#     if {[catch {
+#         set FH [open $filename r]
+#         set content [read $FH]
+#         close $FH
+#     } errorstring]} {
+#         error " File $filename could not be opened : $errorstring "
+#     }
+#     return $content
+# }
+# if {[get_file_contents .step] == "synthesis"} { # just doing synthesis
+#     read_verilog [get_file_contents .synthesis-source-files]
+# } else { # going all the way to implementation
+#     read_verilog [get_file_contents .implementation-source-files]
+# }
+# set_part xc7z020clg484-1
+INFO: [Coretcl 2-1500] The part has been set to 'xc7z020clg484-1' for the current project only. Run set_part -help for more details. To evaluate different speed grades in the current design, use the set_speed_grade command, or use the open_checkpoint -part command to change the part used by an existing checkpoint design.
+# if { [string length [get_file_contents .ip-blocks]] > 0 } {
+#     read_ip [get_file_contents .ip-blocks]
+# 
+#     # generate synthesis targets for IP blocks, so they will get synthesized by synth_design below
+#     if { [llength [get_ips]] > 0 } {
+#         generate_target all [get_ips]
+#         #synth_ip [get_ips charLib init_sequence_rom pixel_buffer] # <- doesn't work for some reason
+#     }
+# }
+# if {[get_file_contents .step] == "synthesis"} { # just doing synthesis
+#     synth_design -top [get_file_contents .top-synth-module] -part xc7z020clg484-1
+# 
+# } else { # going all the way to implementation instead
+#     if {[get_file_contents .top-impl-module] == ""} {
+#         error "This design has no top-level module defined for implementation. It can only be run through synthesis."
+#     }
+# 
+#     # only add constraint files if there are any
+#     if { [string length [get_file_contents .constraint-files]] > 0 } {
+#         read_xdc [get_file_contents .constraint-files]
+#     }
+# 
+#     synth_design -top [get_file_contents .top-impl-module] -part xc7z020clg484-1
+# }
+Command: synth_design -top lc4_system -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 21037 
+ERROR: [Synth 8-988] reg_w_wsel is already declared [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:228]
+INFO: [Synth 8-2350] module lc4_processor ignored due to previous errors [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v:16]
+Failed to read verilog '/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/lc4_pipeline.v'
+INFO: [Common 17-83] Releasing license: Synthesis
+3 Infos, 0 Warnings, 0 Critical Warnings and 2 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 30 15:29:42 2020...

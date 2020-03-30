@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# xsim v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon Mar 30 14:56:43 2020
+# Process ID: 18428
+# Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
+# Command line: xsim -mode tcl -source {xsim.dir/snapshot.sim/xsim_script.tcl}
+# Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/xsim.log
+# Journal file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/snapshot.sim/xsim_script.tcl
+run -all

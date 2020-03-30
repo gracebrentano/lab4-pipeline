@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date             : Sun Mar 29 13:06:06 2020
-| Host             : big20 running 64-bit openSUSE Leap 15.1
+| Date             : Mon Mar 30 15:34:01 2020
+| Host             : big08 running 64-bit openSUSE Leap 15.1
 | Command          : report_power -file ./output/post_route_power_report.txt
 | Design           : lc4_system
 | Device           : xc7z020clg484-1
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.271        |
+| Total On-Chip Power (W)  | 0.265        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.160        |
+| Dynamic (W)              | 0.155        |
 | Device Static (W)        | 0.110        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 81.9         |
@@ -52,21 +52,21 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.001 |        7 |       --- |             --- |
-| Slice Logic             |     0.004 |     2509 |       --- |             --- |
-|   LUT as Logic          |     0.004 |     1633 |     53200 |            3.07 |
-|   CARRY4                |    <0.001 |      122 |     13300 |            0.92 |
-|   F7/F8 Muxes           |    <0.001 |       32 |     53200 |            0.06 |
-|   Register              |    <0.001 |      289 |    106400 |            0.27 |
-|   LUT as Shift Register |    <0.001 |        2 |     17400 |            0.01 |
-|   Others                |     0.000 |       85 |       --- |             --- |
-| Signals                 |     0.006 |     1914 |       --- |             --- |
+| Clocks                  |     0.002 |        7 |       --- |             --- |
+| Slice Logic             |     0.002 |     2794 |       --- |             --- |
+|   LUT as Logic          |     0.002 |     1615 |     53200 |            3.04 |
+|   CARRY4                |    <0.001 |      124 |     13300 |            0.93 |
+|   Register              |    <0.001 |      524 |    106400 |            0.49 |
+|   F7/F8 Muxes           |    <0.001 |       22 |     53200 |            0.04 |
+|   LUT as Shift Register |    <0.001 |        7 |     17400 |            0.04 |
+|   Others                |     0.000 |      124 |       --- |             --- |
+| Signals                 |     0.003 |     2054 |       --- |             --- |
 | Block RAM               |     0.019 |     39.5 |       140 |           28.21 |
 | MMCM                    |     0.122 |        1 |         4 |           25.00 |
 | DSPs                    |    <0.001 |        1 |       220 |            0.45 |
 | I/O                     |     0.006 |       36 |       200 |           18.00 |
 | Static Power            |     0.110 |          |           |                 |
-| Total                   |     0.271 |          |           |                 |
+| Total                   |     0.265 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.039 |       0.030 |      0.009 |
+| Vccint    |       1.000 |     0.033 |       0.025 |      0.009 |
 | Vccaux    |       1.800 |     0.079 |       0.068 |      0.011 |
 | Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -156,7 +156,7 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| lc4_system              |     0.160 |
+| lc4_system              |     0.155 |
 |   fake_kbd_inst         |    <0.001 |
 |     kbdr_reg            |    <0.001 |
 |     kbsr_reg            |    <0.001 |
@@ -171,11 +171,11 @@ Table of Contents
 |     op_u                |    <0.001 |
 |       state_reg         |    <0.001 |
 |   gwe_cleaner           |    <0.001 |
-|   memory                |     0.027 |
-|     memory              |     0.027 |
-|       i1out_reg         |     0.007 |
+|   memory                |     0.020 |
+|     memory              |     0.020 |
+|       i1out_reg         |    <0.001 |
 |   mmcm0                 |     0.123 |
-|   proc_inst             |     0.003 |
+|   proc_inst             |     0.005 |
 |     alu                 |    <0.001 |
 |       a                 |    <0.001 |
 |         genblk1[0].l    |    <0.001 |
@@ -196,7 +196,7 @@ Table of Contents
 |         genblk1[9].l    |    <0.001 |
 |     nzp_reg             |    <0.001 |
 |     pc_reg              |    <0.001 |
-|     regFile             |     0.002 |
+|     regFile             |    <0.001 |
 |       r0                |    <0.001 |
 |       r1                |    <0.001 |
 |       r2                |    <0.001 |
@@ -204,7 +204,47 @@ Table of Contents
 |       r4                |    <0.001 |
 |       r5                |    <0.001 |
 |       r6                |    <0.001 |
-|       r7                |     0.002 |
+|       r7                |    <0.001 |
+|     reg_alu_ir          |    <0.001 |
+|     reg_alu_is_branch   |    <0.001 |
+|     reg_alu_is_load     |    <0.001 |
+|     reg_alu_is_store    |    <0.001 |
+|     reg_alu_nzp_we      |    <0.001 |
+|     reg_alu_pc          |    <0.001 |
+|     reg_alu_r1sel       |    <0.001 |
+|     reg_alu_r2sel       |    <0.001 |
+|     reg_alu_regfile_we  |    <0.001 |
+|     reg_alu_rs          |    <0.001 |
+|     reg_alu_rt          |    <0.001 |
+|     reg_alu_stall       |    <0.001 |
+|     reg_alu_wsel        |    <0.001 |
+|     reg_insn_ir         |    <0.001 |
+|     reg_insn_is_branch  |    <0.001 |
+|     reg_insn_nzp_we     |    <0.001 |
+|     reg_insn_pc         |    <0.001 |
+|     reg_insn_r1sel      |    <0.001 |
+|     reg_insn_r2sel      |    <0.001 |
+|     reg_insn_regfile_we |    <0.001 |
+|     reg_insn_stall      |    <0.001 |
+|     reg_mem_alu         |     0.003 |
+|     reg_mem_ir          |    <0.001 |
+|     reg_mem_is_load     |    <0.001 |
+|     reg_mem_is_store    |    <0.001 |
+|     reg_mem_nzp_we      |    <0.001 |
+|     reg_mem_pc          |    <0.001 |
+|     reg_mem_regfile_we  |    <0.001 |
+|     reg_mem_rt          |    <0.001 |
+|     reg_mem_stall       |    <0.001 |
+|     reg_mem_wsel        |    <0.001 |
+|     reg_w_alu           |    <0.001 |
+|     reg_w_data          |    <0.001 |
+|     reg_w_ir            |    <0.001 |
+|     reg_w_is_load       |    <0.001 |
+|     reg_w_nzp_we        |    <0.001 |
+|     reg_w_pc            |    <0.001 |
+|     reg_w_regfile_we    |    <0.001 |
+|     reg_w_stall         |    <0.001 |
+|     reg_w_wsel          |    <0.001 |
 |   timer                 |    <0.001 |
 |     counter_reg         |    <0.001 |
 |     interval_reg        |    <0.001 |

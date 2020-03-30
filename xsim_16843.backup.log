@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# xsim v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Mon Mar 30 13:01:04 2020
+# Process ID: 16843
+# Current directory: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline
+# Command line: xsim -mode tcl -source {xsim.dir/snapshot.sim/xsim_script.tcl}
+# Log file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/xsim.log
+# Journal file: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/snapshot.sim/xsim_script.tcl
+# xsim {snapshot.sim} -wdb {sim.wdb} -autoloadwcfg -runall -stats
+Vivado Simulator 2017.4
+Time resolution is 1 ps
+run -all
+Info: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_br.hex
+Time: 0 ps  Iteration: 0  Process: /test_processor/memory/memory/Initial42_3  File: /mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/include/bram.v
+Cycle number:           0
+Cycle number:       10000
+Simulation finished:      170125 test cases           0 errors [/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/test_data/test_br.ctrace]
+<scorePossible>    170125</scorePossible>
+<scoreActual>    170125</scoreActual>
+  Instructions:               15232
+  Total Cycles:               17805
+  CPI x 1000:        1168
+  IPC x 1000:         855
+$finish called at time : 712312 ns : File "/mnt/castor/seas_home/b/brentano/cis501/lab4-pipeline/testbench_lc4_processor.v" Line 339
+exit
+INFO: Simulation Memory Usage: 119156 KB (Peak: 180332 KB)
+INFO: Simulation CPU Usage: 1980 ms
+INFO: [Common 17-206] Exiting xsim at Mon Mar 30 13:01:14 2020...

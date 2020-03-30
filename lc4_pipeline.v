@@ -193,6 +193,15 @@ module lc4_processor
   assign should_mx_bypass_rs = (reg_alu_r1sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0) ? 1'b1 : 1'b0;
   assign should_mx_bypass_rt = (reg_alu_r2sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0) ? 1'b1 : 1'b0;
 
+
+  //Handle WM bypass
+  wire [15:0]  wsel_wm_bypassed;
+  wire should_wm_bypass_wsel;
+  
+  // Might be test_regfile_wsel instead of test_regfile_data
+  // assign wsel_wm_bypassed = should_wm_bypass_wsel ? test_regfile_wsel : reg_mem_wsel_out;
+  assign wsel_wm_bypassed = should_wm_bypass_wsel ? test_regfile_data : reg_mem_alu_out;
+
   //Memory Operations
   wire [15:0] temp_dmem_data; 
   assign o_dmem_we = reg_mem_ir_out[15:12] == 4'b0111 ? 1'b1 : 1'b0;
@@ -209,12 +218,14 @@ module lc4_processor
   Nbit_reg #(16, 16'h8200) reg_w_pc (.in(reg_mem_pc_out), .out(reg_w_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_ir (.in(reg_mem_ir_out), .out(reg_w_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_rs (.in(reg_mem_rs_out), .out(reg_w_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(16, 16'h0000) reg_w_alu (.in(reg_mem_alu_out), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(16, 16'h0000) reg_w_alu (.in(reg_mem_alu_out), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(16, 16'h0000) reg_w_alu (.in(wsel_wm_bypassed), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_data_addr (.in(o_dmem_addr), .out(reg_w_data_addr_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_data (.in(temp_dmem_data), .out(reg_w_data_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_r1sel (.in(reg_mem_r1sel_out), .out(reg_w_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_r2sel (.in(reg_mem_r2sel_out), .out(reg_w_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_wsel (.in(reg_mem_wsel_out), .out(reg_w_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(3, 3'h000) reg_w_wsel (.in(wsel_wm_bypassed), .out(reg_w_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_nzp_we (.in(reg_mem_nzp_we_out), .out(reg_w_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_regfile_we (.in(reg_mem_we_out), .out(reg_w_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_is_load (.in(reg_mem_is_load_out), .out(reg_w_is_load_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
@@ -229,6 +240,11 @@ module lc4_processor
   //WD BYPASS
   assign should_wd_bypass_rs = (reg_insn_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
   assign should_wd_bypass_rt = (reg_insn_r2sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
+
+  //WM BYPASS
+  // Unlike other bypasses, only bypass if write destination matches store
+  // data input.
+  assign should_wm_bypass_wsel = (reg_mem_wsel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;  
 
   //TEST WIRE ASSIGNMENT
   wire [15:0] pc_plus_one; //extra pc_plus_one for trap
