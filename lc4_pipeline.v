@@ -169,25 +169,30 @@ module lc4_processor
   //HANDLE BRANCH MISPREDICTION
    //assign pred_cur_mem_insn = (test_stall == 2'b10) && branch_mispredict ? 16'h0000 : reg_alu_ir_out;
 
-  //MEMORY STAGE
-  wire [15:0]   reg_mem_pc_out, reg_mem_ir_out, reg_mem_alu_out, reg_mem_rt_out, reg_mem_rs_out;
+
+     //MEMORY STAGE
+  wire [16:0]   reg_mem_pc_out, reg_mem_ir_out, reg_mem_alu_out, reg_mem_rt_out, reg_mem_rs_out;
   wire [2:0] reg_mem_r1sel_out, reg_mem_r2sel_out, reg_mem_wsel_out;
   wire [1:0] reg_mem_stall_out;
   wire reg_mem_is_load_out, reg_mem_is_store_out, reg_mem_is_branch_out, reg_mem_we_out, reg_mem_nzp_we_out;
   Nbit_reg #(16, 16'h8200) reg_mem_pc (.in(reg_alu_pc_out), .out(reg_mem_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(16, 16'h0000) reg_mem_ir (.in(reg_alu_ir_out), .out(reg_mem_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(16, 16'h0000) reg_mem_ir (.in(reg_alu_ir_out), .out(reg_mem_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(16, 16'h0000) reg_mem_ir (.in(mem_stall ? 16'h0000 : reg_alu_ir_out), .out(reg_mem_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_mem_alu (.in(alu_out), .out(reg_mem_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_mem_rs (.in(reg_alu_rs_out), .out(reg_mem_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_mem_rt (.in(reg_alu_rt_out), .out(reg_mem_rt_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_mem_r1sel (.in(reg_alu_r1sel_out), .out(reg_mem_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_mem_r2sel (.in(reg_alu_r2sel_out), .out(reg_mem_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_mem_wsel (.in(reg_alu_wsel_out), .out(reg_mem_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(1, 1'h0) reg_mem_nzp_we (.in(reg_alu_nzp_we_out), .out(reg_mem_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(1, 1'h0) reg_mem_regfile_we (.in(reg_alu_we_out), .out(reg_mem_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(1, 1'h0) reg_mem_nzp_we (.in(mem_stall ? 1'h0 : reg_alu_nzp_we_out), .out(reg_mem_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(1, 1'h0) reg_mem_nzp_we (.in(reg_alu_nzp_we_out), .out(reg_mem_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(1, 1'h0) reg_mem_regfile_we (.in(mem_stall ? 1'h0 : reg_alu_we_out), .out(reg_mem_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(1, 1'h0) reg_mem_regfile_we (.in(reg_alu_we_out), .out(reg_mem_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_mem_is_load (.in(reg_alu_is_load_out), .out(reg_mem_is_load_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_mem_is_store (.in(reg_alu_is_store_out), .out(reg_mem_is_store_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_mem_is_branch (.in(reg_alu_is_branch_out), .out(reg_mem_is_branch_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(2, 2'b10) reg_mem_stall (.in(reg_alu_stall_out), .out(reg_mem_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(2, 2'b10) reg_mem_stall (.in(reg_alu_stall_out), .out(reg_mem_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(2, 2'b10) reg_mem_stall (.in(mem_stall ? 2'b11 : reg_alu_stall_out), .out(reg_mem_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
  
   //MX BYPASS
   assign should_mx_bypass_rs = (reg_alu_r1sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0) ? 1'b1 : 1'b0;
@@ -210,6 +215,11 @@ module lc4_processor
   assign temp_dmem_data = reg_mem_is_load_out ? i_cur_dmem_data : (reg_mem_is_store_out ? reg_mem_rt_out : 16'b0);
     
 
+   //Logic for memory stall
+   // wire mem_stall;
+   // Test after memory too iwth mem_r1_sel_out
+   // assign mem_stall = (reg_alu_r1sel_out == reg_w_wsel_out) || (reg_alu_r2sel_out == reg_w_wsel_out);
+
   //WRITE STAGE
   wire [15:0]   reg_w_pc_out, reg_w_ir_out, reg_w_alu_out, reg_w_data_out, reg_w_rs_out, reg_w_data_addr_out;
   wire [2:0] reg_w_r1sel_out, reg_w_r2sel_out, reg_w_wsel_out;
@@ -217,21 +227,24 @@ module lc4_processor
   wire reg_w_is_load_out, reg_w_is_branch_out, reg_w_we_out, reg_w_nzp_we_out, reg_w_dmem_we_out;
   Nbit_reg #(16, 16'h8200) reg_w_pc (.in(reg_mem_pc_out), .out(reg_w_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_ir (.in(reg_mem_ir_out), .out(reg_w_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(16, 16'h0000) reg_w_ir (.in(mem_stall ? 16'h0000 : reg_mem_ir_out), .out(reg_w_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_rs (.in(reg_mem_rs_out), .out(reg_w_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  // Nbit_reg #(16, 16'h0000) reg_w_alu (.in(reg_mem_alu_out), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  Nbit_reg #(16, 16'h0000) reg_w_alu (.in(wsel_wm_bypassed), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(16, 16'h0000) reg_w_alu (.in(wsel_wm_bypassed), .out(reg_w_alu_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  Nbit_reg #(16, 16'h0000) reg_w_alu (.in(reg_mem_alu_out), .out(reg_w_alu_out), .clk(clk), .we(2'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_data_addr (.in(o_dmem_addr), .out(reg_w_data_addr_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(16, 16'h0000) reg_w_data (.in(temp_dmem_data), .out(reg_w_data_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_r1sel (.in(reg_mem_r1sel_out), .out(reg_w_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_r2sel (.in(reg_mem_r2sel_out), .out(reg_w_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(3, 3'h000) reg_w_wsel (.in(reg_mem_wsel_out), .out(reg_w_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-  // Nbit_reg #(3, 3'h000) reg_w_wsel (.in(wsel_wm_bypassed), .out(reg_w_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_nzp_we (.in(reg_mem_nzp_we_out), .out(reg_w_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(1, 1'h0) reg_w_nzp_we (.in(mem_stall ? 1'h0 : reg_mem_nzp_we_out), .out(reg_w_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_regfile_we (.in(reg_mem_we_out), .out(reg_w_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(1, 1'h0) reg_w_regfile_we (.in(mem_stall ? 1'h0 : reg_mem_we_out), .out(reg_w_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_is_load (.in(reg_mem_is_load_out), .out(reg_w_is_load_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_is_branch (.in(reg_mem_is_branch_out), .out(reg_w_is_branch_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(1, 1'h0) reg_w_dmem_we (.in(o_dmem_we), .out(reg_w_dmem_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   Nbit_reg #(2, 2'b10) reg_w_stall (.in(reg_mem_stall_out), .out(reg_w_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+  // Nbit_reg #(2, 2'b10) reg_w_stall (.in(mem_stall ? 2'b11 : reg_mem_stall_out), .out(reg_w_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
 
   //WX BYPASS
   assign should_wx_bypass_rs = (reg_alu_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
@@ -244,7 +257,20 @@ module lc4_processor
   //WM BYPASS
   // Unlike other bypasses, only bypass if write destination matches store
   // data input.
-  assign should_wm_bypass_wsel = (reg_mem_wsel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;  
+  // assign should_wm_bypass_wsel = (reg_mem_wsel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;  
+  assign should_wm_bypass_wsel = (reg_mem_wsel_out == reg_w_wsel_out && reg_w_is_load_out  && reg_mem_is_store_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;  
+
+// Logic for memory stall
+   wire mem_stall, store_data_input_match, mem_nop, w_nop;
+   // Test after memory too iwth mem_r1_sel_out
+   // I had this as alu_r1sel_out before and I don't know why 
+   assign store_data_input_match = (reg_mem_r1sel_out == reg_w_wsel_out) || (reg_mem_r2sel_out == reg_w_wsel_out);
+   assign mem_nop = (reg_mem_ir_out == 16'h0000) ? 1'b1 : 1'b0;
+   assign w_nop = (reg_w_ir_out == 16'h0000) ? 1'b1 : 1'b0;
+   assign mem_stall = ((reg_mem_r1sel_out == reg_w_wsel_out) || (reg_mem_r2sel_out == reg_w_wsel_out)) | ((reg_mem_ir_out == 16'h0000) || reg_w_ir_out == 16'h0000);
+   // assign mem_stall = (((reg_mem_r1sel_out == reg_w_wsel_out) || (reg_mem_r2sel_out == reg_w_wsel_out)) | (reg_alu_ir_out == 16'h0000)) | (test_cur_pc == 16'h8200);
+
+
 
   //TEST WIRE ASSIGNMENT
   wire [15:0] pc_plus_one; //extra pc_plus_one for trap
@@ -277,32 +303,40 @@ module lc4_processor
 `ifndef NDEBUG
    always @(posedge gwe) begin
       //USE THESE FOR DEBUGGING
-      // $display("------------%h--------------------", test_cur_pc);
+      $display("------------%h--------------------", test_cur_pc);
 
-      // $display("***FETCH***");
-      // pinstr(i_cur_insn);
-      // $display("\n\tPC=%h", o_cur_pc);
+      $display("***FETCH***");
+      pinstr(i_cur_insn);
+      $display("\n\tPC=%h", o_cur_pc);
 
-      // $display("\n***DECODE***");
-      // pinstr(reg_insn_ir_out);
-      // $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d", reg_insn_pc_out, reg_insn_r1sel_out, rs_wd_bypassed, reg_insn_r2sel_out, rt_wd_bypassed, reg_insn_wsel_out);
+      $display("\n***DECODE***");
+      pinstr(reg_insn_ir_out);
+      $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d \n\tStall=%d", reg_insn_pc_out, reg_insn_r1sel_out, rs_wd_bypassed, reg_insn_r2sel_out, rt_wd_bypassed, reg_insn_wsel_out, reg_insn_stall_out);
 
-      // $display("\n***EXECUTE***");
-      // pinstr(reg_alu_ir_out);
-      // $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d \n\tData=%d \n\tBR=%d", reg_alu_pc_out, reg_alu_r1sel_out, rs_mx_bypassed, reg_alu_r2sel_out, rt_mx_bypassed, reg_alu_wsel_out, alu_out, branch_stall);
+      $display("\n***EXECUTE***");
+      pinstr(reg_alu_ir_out);
+      $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d \n\tData=%d \n\tBR_stall=%d \n\tStall=%d", reg_alu_pc_out, reg_alu_r1sel_out, rs_mx_bypassed, reg_alu_r2sel_out, rt_mx_bypassed, reg_alu_wsel_out, alu_out, branch_stall, reg_alu_stall_out);
 
-      // $display("\n***MEM***");
-      // pinstr(reg_mem_ir_out);
-      // $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d", reg_mem_pc_out, reg_mem_r1sel_out, reg_mem_r2sel_out, reg_mem_wsel_out, reg_mem_alu_out);
+      $display("\n***MEM***");
+      pinstr(reg_mem_ir_out);
+      $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tStall=%d", reg_mem_pc_out, reg_mem_r1sel_out, reg_mem_r2sel_out, reg_mem_wsel_out, reg_mem_alu_out, reg_mem_stall_out);
       
-      // $display("\n***WRITE***");
-      // pinstr(reg_w_ir_out);
-      // $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tNZP=%d \n\tnzpReg=%d", reg_w_pc_out, reg_w_r1sel_out, reg_w_r2sel_out, reg_w_wsel_out, test_regfile_data, test_nzp_new_bits, nzp_reg_out);
+      $display("\n***WRITE***");
+      pinstr(reg_w_ir_out);
+      $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tStall=%d, \n\tNZP=%d \n\tnzpReg=%d", reg_w_pc_out, reg_w_r1sel_out, reg_w_r2sel_out, reg_w_wsel_out, test_regfile_data, reg_w_stall_out, test_nzp_new_bits, nzp_reg_out);
 
-      // $display("\n-----------------------------------\n");
-      // $display("%d %h %h %h %h %h", $time, f_pc, d_pc, e_pc, m_pc, test_cur_pc);
-      // if (o_dmem_we)
-      //   $display("%d STORE %h <= %h", $time, o_dmem_addr, o_dmem_towrite);
+      $display("\n***MEM BYPASS***");
+      $display("\n\tShould WM bypass=%h \n\tValue=%d", should_wm_bypass_wsel, wsel_wm_bypassed);
+      
+      $display("\n***MEM STALL***");
+      $display("\n\tMem Stall=%h \n\tStore Data Input Match =%h \n\tmem_nop=%h \n\tw_nop=%h \n\talu_insn=%h \n\tmem_insn=%h \n\tw_insn=%h", mem_stall, store_data_input_match, mem_nop, w_nop, reg_alu_ir_out, reg_mem_ir_out, reg_w_ir_out);
+      $display("\n\tmem_we=%h \n\treg_we=%h", reg_mem_regfile_we, reg_w_regfile_we);
+      // $display("\n\tMem Stall=%h \n\tStore Data Input Match =%h \n\tmem_nop=%h \n\tw_nop=%h \n\talu_insn=%h \n\tmem_insn=%h \n\tw_insn=%h \n\tmem_we=%d \n\treg_we=%d", mem_stall, store_data_input_match, mem_nop, w_nop, reg_alu_ir_out, reg_mem_ir_out, reg_w_ir_out, reg_mem_regfile_we, reg_w_regfile_we);
+
+      $display("\n-----------------------------------\n");
+      //$display("%d %h %h %h %h %h", $time, f_pc, d_pc, e_pc, m_pc, test_cur_pc);
+      if (o_dmem_we)
+        $display("%d STORE %h <= %h", $time, o_dmem_addr, o_dmem_towrite);
 
       // Start each $display() format string with a %d argument for time
       // it will make the output easier to read.  Use %b, %h, and %d
