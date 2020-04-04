@@ -59,7 +59,7 @@ module lc4_processor
    //decoder
    wire [2:0] r1sel, r2sel, wsel;
    wire r1we, r2we, regfile_we, nzp_we, select_pc_plus_one, is_load, is_store, is_branch, is_control_insn;
-   lc4_decoder d (.insn(i_cur_insn),
+   lc4_decoder d (.insn(mem_stall ? reg_insn_pc_out : i_cur_insn),
                   .r1sel(r1sel),
                   .r1re(r1we),
                   .r2sel(r2sel),
@@ -80,17 +80,18 @@ module lc4_processor
    wire [2:0] reg_insn_r1sel_out, reg_insn_r2sel_out, reg_insn_wsel_out;
    wire [1:0] reg_insn_stall_out;
    wire reg_insn_we_out, reg_insn_is_load_out, reg_insn_is_store_out, reg_insn_is_branch_out, reg_insn_nzp_we_out, branch_stall;
-   Nbit_reg #(16, 16'h8200) reg_insn_pc (.in(pc), .out(reg_insn_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(16, 16'h0000) reg_insn_ir (.in(branch_stall ? 16'h0000 : i_cur_insn), .out(reg_insn_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h8200) reg_insn_pc (.in(mem_stall ? reg_insn_pc_out : pc), .out(reg_insn_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h0000) reg_insn_ir (.in(branch_stall ? 16'h0000 : (mem_stall ? reg_insn_ir_out : i_cur_insn)), .out(reg_insn_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_r1sel (.in(r1sel), .out(reg_insn_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_r2sel (.in(r2sel), .out(reg_insn_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_wsel (.in(wsel), .out(reg_insn_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(1, 1'h0) reg_insn_regfile_we (.in(branch_stall ? 1'h0 : regfile_we), .out(reg_insn_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(1, 1'h0) reg_insn_nzp_we (.in(branch_stall ? 1'h0 : nzp_we), .out(reg_insn_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(1, 1'h0) reg_insn_regfile_we (.in(mem_or_branch_stall ? 1'h0 : regfile_we), .out(reg_insn_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(1, 1'h0) reg_insn_nzp_we (.in(mem_or_branch_stall ? 1'h0 : nzp_we), .out(reg_insn_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_load (.in(is_load), .out(reg_insn_is_load_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_store (.in(is_store), .out(reg_insn_is_store_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_branch (.in(is_branch), .out(reg_insn_is_branch_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(2, 2'b10) reg_insn_stall (.in(branch_stall ? 2'b10 : 2'b00), .out(reg_insn_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(2, 2'b10) reg_insn_stall (.in(branch_stall ? stall_value : 2'b00), .out(reg_insn_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   // Nbit_reg #(2, 2'b10) reg_insn_stall (.in(branch_stall ? 2'b10 : 2'b00), .out(reg_insn_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
 
    //register file
    wire [15:0] reg_rs_out, reg_rt_out, reg_rd_out, rs_wd_bypassed, rt_wd_bypassed, pred_cur_alu_insn;
@@ -123,7 +124,7 @@ module lc4_processor
    wire [2:0] reg_alu_r1sel_out, reg_alu_r2sel_out, reg_alu_wsel_out;
    wire [1:0] reg_alu_stall_out;
    wire reg_alu_is_load_out, reg_alu_is_store_out, reg_alu_is_branch_out, reg_alu_we_out, reg_alu_nzp_we_out;
-   Nbit_reg #(16, 16'h8200) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h8200) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_ir (.in(mem_or_branch_stall ? 16'h0000 : reg_insn_ir_out), .out(reg_alu_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_rs (.in(rs_wd_bypassed), .out(reg_alu_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_rt (.in(rt_wd_bypassed), .out(reg_alu_rt_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
@@ -160,11 +161,10 @@ module lc4_processor
   assign branch_stall = should_branch || reg_alu_ir_out[15:12] == 4'b1111 || reg_alu_ir_out[15:12] == 4'b1100 || reg_alu_ir_out[15:12] == 4'b1000 || reg_alu_ir_out[15:12] == 4'b0100;
   
   //NEXT PC SETUP
-  wire [15:0] pc_offset, pc_branch_adjust, imm9, imm11, next_pc_temp_branch, next_pc_temp_rs, next_pc_temp_rti, next_pc_temp_final;
+  wire [15:0] pc_offset, pc_branch_adjust, imm9, imm11, next_pc_temp_branch, next_pc_temp_rs, next_pc_temp_rti, next_pc_temp_final, last_pc;
   assign imm9 = {{7{reg_alu_ir_out[8]}}, reg_alu_ir_out[8:0]};
   assign imm11 = {{5{reg_alu_ir_out[10]}}, reg_alu_ir_out[10:0]};
   assign pc_offset = should_branch ? imm9 : (reg_alu_ir_out[15:11] == 5'b11001 ? imm11 : 16'b0);
-  // possibly add branch_or_mem_stall here
   cla16 pc_cla_a (.a(pc_offset), .b(branch_stall ? 16'hFFFE : 1'b0), .cin(1'd0), .sum(pc_branch_adjust));
   cla16 pc_cla (.a(o_cur_pc), .b(pc_branch_adjust), .cin(1'd1), .sum(next_pc_temp_branch));
 
@@ -174,7 +174,10 @@ module lc4_processor
   assign next_pc_temp_rs =  (reg_alu_ir_out[15:11] == 5'b11000 || reg_alu_ir_out[15:11] == 5'b01000) ? rs_mx_bypassed : next_pc_temp_branch;
   assign next_pc_temp_rti = (reg_alu_ir_out[15:12] == 4'b1111 ||  reg_alu_ir_out[15:11] == 5'b01001) ? alu_out : next_pc_temp_rs;
   assign next_pc_temp_final = (reg_alu_ir_out[15:12] == 4'b1000) ? rs_mx_bypassed : next_pc_temp_rti;
-  assign next_pc = next_pc_temp_final;
+  // Do we need this? if wire cant be assigned to itself
+  assign last_pc = next_pc;
+  assign next_pc = mem_stall ? pc : next_pc_temp_final;
+  // assign next_pc = next_pc_temp_final;
 
   //HANDLE BRANCH MISPREDICTION
    //assign pred_cur_mem_insn = (test_stall == 2'b10) && branch_mispredict ? 16'h0000 : reg_alu_ir_out;
@@ -318,7 +321,10 @@ module lc4_processor
       $display("\n\tmem_stall=%h \n\tmem_or_branch_stall=%h \n\tstall_value=%h", mem_stall, mem_or_branch_stall, stall_value);
 
       $display("\n***PC LOGIC***");
-      $display("\n\tpc_offset=%h \n\tpc_branch_adjust=%h \n\tnext_pc_temp_branch=%h \n\tnext_pc_temp_final=%h", pc_offset, pc_branch_adjust, next_pc_temp_branch, next_pc_temp_final);
+      $display("\n\tpc_offset=%h \n\tpc_branch_adjust=%h \n\tnext_pc_temp_branch=%b \n\tnext_pc_temp_final=%b \n\tlast_pc=%h \n\tnext_pc=%h, \n\tpc=%h \n\to_cur_pc=%h", pc_offset, pc_branch_adjust, next_pc_temp_branch, next_pc_temp_final, last_pc, next_pc, pc, o_cur_pc);
+
+      $display("\n***WRITE ENABLE***");
+      $display("\n\treg_insn_we_out=%h \n\treg_insn_nzp_we_out=%h \n\treg_alu_we_out=%b \n\treg_alu_nzp_we_out=%b", reg_insn_we_out, reg_insn_nzp_we_out, reg_alu_we_out, reg_alu_nzp_we_out);
 
       $display("\n-----------------------------------\n");
       //$display("%d %h %h %h %h %h", $time, f_pc, d_pc, e_pc, m_pc, test_cur_pc);
