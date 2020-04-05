@@ -1,4 +1,3 @@
-  
 /* Henry Garant(henrygar)
  * Grace Brentano(brentano)
  *
@@ -85,8 +84,8 @@ module lc4_processor
    Nbit_reg #(3, 3'h000) reg_insn_r1sel (.in(r1sel), .out(reg_insn_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_r2sel (.in(r2sel), .out(reg_insn_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_wsel (.in(wsel), .out(reg_insn_wsel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(1, 1'h0) reg_insn_regfile_we (.in(mem_or_branch_stall ? 1'h0 : regfile_we), .out(reg_insn_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
-   Nbit_reg #(1, 1'h0) reg_insn_nzp_we (.in(mem_or_branch_stall ? 1'h0 : nzp_we), .out(reg_insn_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(1, 1'h0) reg_insn_regfile_we (.in(branch_stall ? 1'h0 : (mem_stall ? reg_insn_we_out : regfile_we)), .out(reg_insn_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(1, 1'h0) reg_insn_nzp_we (.in(branch_stall ? 1'h0 : (mem_stall ? reg_insn_nzp_we_out : nzp_we)), .out(reg_insn_nzp_we_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_load (.in(is_load), .out(reg_insn_is_load_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_store (.in(is_store), .out(reg_insn_is_store_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(1, 1'h0) reg_insn_is_branch (.in(is_branch), .out(reg_insn_is_branch_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
@@ -124,7 +123,8 @@ module lc4_processor
    wire [2:0] reg_alu_r1sel_out, reg_alu_r2sel_out, reg_alu_wsel_out;
    wire [1:0] reg_alu_stall_out;
    wire reg_alu_is_load_out, reg_alu_is_store_out, reg_alu_is_branch_out, reg_alu_we_out, reg_alu_nzp_we_out;
-   Nbit_reg #(16, 16'h8200) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h8200) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
+   //Nbit_reg #(16, 16'h8200) reg_alu_pc (.in(reg_insn_pc_out), .out(reg_alu_pc_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_ir (.in(mem_or_branch_stall ? 16'h0000 : reg_insn_ir_out), .out(reg_alu_ir_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_rs (.in(rs_wd_bypassed), .out(reg_alu_rs_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_alu_rt (.in(rt_wd_bypassed), .out(reg_alu_rt_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
@@ -301,18 +301,22 @@ module lc4_processor
       $display("\n***DECODE***");
       pinstr(reg_insn_ir_out);
       $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d \n\tStall=%d", reg_insn_pc_out, reg_insn_r1sel_out, rs_wd_bypassed, reg_insn_r2sel_out, rt_wd_bypassed, reg_insn_wsel_out, reg_insn_stall_out);
+      $display("\n\treg_insn_we_out=%h", reg_insn_we_out);
 
       $display("\n***EXECUTE***");
       pinstr(reg_alu_ir_out);
       $display("\n\tPC=%h \n\tRS=%d-%d \n\tRT=%d-%d \n\tRD=%d \n\tData=%d \n\tBR_stall=%d \n\tStall=%d", reg_alu_pc_out, reg_alu_r1sel_out, rs_mx_bypassed, reg_alu_r2sel_out, rt_mx_bypassed, reg_alu_wsel_out, alu_out, branch_stall, reg_alu_stall_out);
+      $display("\n\treg_alu_we_out=%h", reg_alu_we_out);
 
       $display("\n***MEM***");
       pinstr(reg_mem_ir_out);
       $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tStall=%d", reg_mem_pc_out, reg_mem_r1sel_out, reg_mem_r2sel_out, reg_mem_wsel_out, reg_mem_alu_out, reg_mem_stall_out);
+      $display("\n\treg_mem_we_out=%h", reg_mem_we_out);
       
       $display("\n***WRITE***");
       pinstr(reg_w_ir_out);
       $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tStall=%d, \n\tNZP=%d \n\tnzpReg=%d", reg_w_pc_out, reg_w_r1sel_out, reg_w_r2sel_out, reg_w_wsel_out, test_regfile_data, reg_w_stall_out, test_nzp_new_bits, nzp_reg_out);
+      $display("\n\treg_w_we_out=%h", reg_w_we_out);
 
       $display("\n***MEM BYPASS***");
       $display("\n\tShould WM bypass=%h \n\tValue=%d", should_wm_bypass_wsel, wsel_wm_bypassed);
@@ -324,7 +328,7 @@ module lc4_processor
       $display("\n\tpc_offset=%h \n\tpc_branch_adjust=%h \n\tnext_pc_temp_branch=%b \n\tnext_pc_temp_final=%b \n\tlast_pc=%h \n\tnext_pc=%h, \n\tpc=%h \n\to_cur_pc=%h", pc_offset, pc_branch_adjust, next_pc_temp_branch, next_pc_temp_final, last_pc, next_pc, pc, o_cur_pc);
 
       $display("\n***WRITE ENABLE***");
-      $display("\n\treg_insn_we_out=%h \n\treg_insn_nzp_we_out=%h \n\treg_alu_we_out=%b \n\treg_alu_nzp_we_out=%b", reg_insn_we_out, reg_insn_nzp_we_out, reg_alu_we_out, reg_alu_nzp_we_out);
+      $display("\n\treg_insn_we_out=%h \n\treg_insn_nzp_we_out=%h \n\treg_alu_we_out=%b \n\treg_alu_nzp_we_out=%b \n\treg_w_we_out=%h \n\treg_w_nzp_we_out=%b", reg_insn_we_out, reg_insn_nzp_we_out, reg_alu_we_out, reg_alu_nzp_we_out, reg_w_we_out, reg_w_nzp_we_out);
 
       $display("\n-----------------------------------\n");
       //$display("%d %h %h %h %h %h", $time, f_pc, d_pc, e_pc, m_pc, test_cur_pc);
