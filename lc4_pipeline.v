@@ -201,8 +201,8 @@ module lc4_processor
   Nbit_reg #(2, 2'b10) reg_mem_stall (.in(reg_alu_stall_out), .out(reg_mem_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
  
   //MX BYPASS
-  assign should_mx_bypass_rs = (reg_alu_r1sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0) ? 1'b1 : 1'b0;
-  assign should_mx_bypass_rt = (reg_alu_r2sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0) ? 1'b1 : 1'b0;
+  assign should_mx_bypass_rs = (reg_alu_r1sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0 && reg_alu_ir_out != 16'h0000 && reg_mem_ir_out != 16'h0000) ? 1'b1 : 1'b0;
+  assign should_mx_bypass_rt = (reg_alu_r2sel_out == reg_mem_wsel_out && reg_mem_we_out && reg_mem_stall_out == 1'b0 && reg_alu_ir_out != 16'h0000 && reg_mem_ir_out != 16'h0000) ? 1'b1 : 1'b0;
 
   //Handle WM bypass
   wire [15:0]  wsel_wm_bypassed;
@@ -238,12 +238,12 @@ module lc4_processor
   Nbit_reg #(2, 2'b10) reg_w_stall (.in(reg_mem_stall_out), .out(reg_w_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
 
   //WX BYPASS
-  assign should_wx_bypass_rs = (reg_alu_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
-  assign should_wx_bypass_rt = (reg_alu_r2sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
+  assign should_wx_bypass_rs = (reg_alu_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0 && reg_alu_ir_out != 16'h0000 && reg_w_ir_out != 16'h0000) ? 1'b1 : 1'b0;
+  assign should_wx_bypass_rt = (reg_alu_r2sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0 && reg_alu_ir_out != 16'h0000 && reg_w_ir_out != 16'h0000) ? 1'b1 : 1'b0;
 
   //WD BYPASS
-  assign should_wd_bypass_rs = (reg_insn_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
-  assign should_wd_bypass_rt = (reg_insn_r2sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;
+  assign should_wd_bypass_rs = (reg_insn_r1sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0 && reg_insn_ir_out != 16'h0000 && reg_w_ir_out != 16'h0000) ? 1'b1 : 1'b0;
+  assign should_wd_bypass_rt = (reg_insn_r2sel_out == reg_w_wsel_out && reg_w_we_out && reg_w_stall_out == 1'b0 && reg_insn_ir_out != 16'h0000 && reg_w_ir_out != 16'h0000) ? 1'b1 : 1'b0;
 
   //WM BYPASS
   // Only bypass if write destination matches store data input.
@@ -306,8 +306,11 @@ module lc4_processor
       $display("\n\tPC=%h \n\tRS=%d \n\tRT=%d \n\tRD=%d \n\tData=%d \n\tStall=%d, \n\tNZP=%d \n\tnzpReg=%d", reg_w_pc_out, reg_w_r1sel_out, reg_w_r2sel_out, reg_w_wsel_out, test_regfile_data, reg_w_stall_out, test_nzp_new_bits, nzp_reg_out);
       $display("\n\treg_w_we_out=%h", reg_w_we_out);
 
-      // $display("\n***MEM BYPASS***");
+      $display("\n***BYPASS***");
+      $display("\n\tShould MX bypass RS=%h \n\tShould MX bypass RT=%d \n\tRS_value=%h \n\tRT_value=%h", should_mx_bypass_rs, should_mx_bypass_rt,  rs_mx_bypassed, rt_mx_bypassed);
       $display("\n\tShould WM bypass=%h \n\tValue=%d", should_wm_bypass_wsel, wsel_wm_bypassed);
+      $display("\n\tShould WX bypass RS=%h \n\tShould WX bypass RT=%d \n\tRS_value=%h \n\tRT_value=%h", should_wx_bypass_rs, should_wx_bypass_rt,  rs_mx_bypassed, rt_mx_bypassed);
+      $display("\n\tShould WD bypass RS=%h \n\tShould WD bypass RT=%d \n\tRS_value=%h \n\tRT_value=%h", should_wd_bypass_rs, should_wd_bypass_rt,  rs_wd_bypassed, rt_wd_bypassed);
       
       $display("\n***MEM STALL***");
       $display("\n\tmem_stall=%h \n\tmem_or_branch_stall=%h \n\tstall_value=%h", mem_stall, mem_or_branch_stall, stall_value);
