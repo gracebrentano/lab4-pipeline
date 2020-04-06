@@ -79,7 +79,7 @@ module lc4_processor
    wire [2:0] reg_insn_r1sel_out, reg_insn_r2sel_out, reg_insn_wsel_out;
    wire [1:0] reg_insn_stall_out;
    wire reg_insn_we_out, reg_insn_is_load_out, reg_insn_is_store_out, reg_insn_is_branch_out, reg_insn_nzp_we_out, branch_stall;
-   Nbit_reg #(16, 16'h8200) reg_insn_pc (.in(mem_stall ? reg_insn_pc_out : pc), .out(reg_insn_pc_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
+   Nbit_reg #(16, 16'h8200) reg_insn_pc (.in(pc), .out(reg_insn_pc_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(16, 16'h0000) reg_insn_ir (.in(branch_stall ? 16'h0000 : i_cur_insn), .out(reg_insn_ir_out), .clk(clk), .we(mem_stall ? 1'b0 : 1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_r1sel (.in(r1sel), .out(reg_insn_r1sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(3, 3'h000) reg_insn_r2sel (.in(r2sel), .out(reg_insn_r2sel_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
@@ -91,6 +91,7 @@ module lc4_processor
    Nbit_reg #(1, 1'h0) reg_insn_is_branch (.in(is_branch), .out(reg_insn_is_branch_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
    Nbit_reg #(2, 2'b10) reg_insn_stall (.in(branch_stall ? stall_value : 2'b00), .out(reg_insn_stall_out), .clk(clk), .we(1'b1), .gwe(gwe), .rst(rst));
   
+
    //register file
    wire [15:0] reg_rs_out, reg_rt_out, reg_rd_out, rs_wd_bypassed, rt_wd_bypassed, pred_cur_alu_insn;
    wire should_wx_bypass_rs, should_wx_bypass_rt, should_wd_bypass_rs, should_wd_bypass_rt;
@@ -246,10 +247,7 @@ module lc4_processor
 
   //WM BYPASS
   // Only bypass if write destination matches store data input.
-  // assign should_wm_bypass_wsel = (reg_mem_wsel_out == reg_w_wsel_out && reg_w_is_load_out  && reg_mem_is_store_out && reg_w_we_out && reg_w_stall_out == 1'b0) ? 1'b1 : 1'b0;  
-
    assign should_wm_bypass_wsel = ((reg_w_ir_out[15:12] == 4'b0110) && (reg_mem_r2sel_out == reg_w_wsel_out) && (reg_mem_ir_out[15:12] == 4'b0111) && reg_w_we_out && (reg_w_stall_out == 1'b0)) ? 1'b1 : 1'b0;
-   // assign mem_stall = (reg_alu_ir_out[15:12] == 4'b0110) && ((reg_insn_r1sel_out == reg_alu_wsel_out) || ((reg_insn_r2sel_out == reg_alu_wsel_out) && (reg_insn_ir_out[15:12] != 4'b0111)));
 
   //TEST WIRE ASSIGNMENT
   wire [15:0] pc_plus_one; //extra pc_plus_one for trap
